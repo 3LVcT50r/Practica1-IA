@@ -1,17 +1,27 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import IA.Bicing.*;
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        Random ran = new Random();
+        int x = ran.nextInt(100);
+        Estaciones epa = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, x);
+        int bicis=0;
 
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        for(int i=0;i<epa.size();i++){
+            System.out.print(" X= ");
+            System.out.print(epa.get(i).getCoordX());
+            System.out.print(" Y= ");
+            System.out.print(epa.get(i).getCoordY());
+            System.out.print(" Bicis= ");
+            System.out.print(epa.get(i).getNumBicicletasNoUsadas());
+            bicis += epa.get(i).getNumBicicletasNoUsadas();
+            System.out.print(" Demanda= ");
+            System.out.println(epa.get(i).getDemanda());
+            //bicis += epa.get(i).getDemanda();
         }
+        System.out.println(bicis);
+
     }
 }

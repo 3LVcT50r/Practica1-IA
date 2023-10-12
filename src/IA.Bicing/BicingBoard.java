@@ -15,10 +15,14 @@ public class BicingBoard {
     //private Vector<Vector<Integer>> state;
     private int state[][];
     private int van;
+    private int stations;
+    private Estaciones est;
     //
-    public BicingBoard(Estaciones stations, int van, String type) {
+    public BicingBoard(Estaciones est, int van, String type) {
         state = new int[van][5];
         this.van = van;
+        this.stations = est.size();
+        this.est = est;
 
         if (type.equals("Greedy")) {
 
@@ -32,7 +36,7 @@ public class BicingBoard {
 
             // Random list to randomize initial state
             List<Integer> randStations = new ArrayList<>();
-            for (int i=0; i < stations.size(); ++i)
+            for (int i=0; i < est.size(); ++i)
                 randStations.add(i);
             Collections.shuffle(randStations);
             int randomIndex=0;
@@ -41,7 +45,7 @@ public class BicingBoard {
                 // start station
                 state[i][START] = randStations.get(randomIndex);
                 // number of bicycles not used
-                int noBic=stations.get(state[i][START]).getNumBicicletasNoUsadas();
+                int noBic=est.get(state[i][START]).getNumBicicletasNoUsadas();
                 state[i][TBIC] = noBic;
                 ++randomIndex;
                 // we continue only if there are bicycles not used
@@ -90,6 +94,18 @@ public class BicingBoard {
         }
     }
 
+    public int getVans() {
+        return van;
+    }
+
+    public boolean vanBound(int v) {
+        return (v >= 0 && v < van);
+    }
+
+    public boolean stationBound(int s) {
+        return (s >= 0 && s < stations);
+    }
+
     //( 0 <= v < this.van | sp = {0,1} )
 
     //Swap stops between vans v1 and v2
@@ -99,6 +115,11 @@ public class BicingBoard {
         int aux = state[v1][STOP1+sp1];
         state[v1][STOP1+sp1] = state[v2][STOP1+sp2];
         state[v2][STOP1+sp2] = aux;
+    }
+
+    public boolean canSwap(int v1, int v2, int sp1, int sp2) {
+        return (vanBound(v1) && vanBound(v2) && stationBound(sp1) &&
+                stationBound(sp2) && v1 != v2 && sp1 != sp2 && state[v1][sp1] != -1 && state[v2][sp2] != -1);
     }
 
     //Delete stop sp from van vn
@@ -117,6 +138,10 @@ public class BicingBoard {
         }
     }
 
+    public boolean canDeleteStop(int vn, int sp) {
+        return (vanBound(vn) && stationBound(sp) && state[vn][sp] != -1);
+    }
+
     //Change station
     //pre: vn and vnc exists
     //post: vn = vnc
@@ -126,17 +151,36 @@ public class BicingBoard {
         state[vn] = aux;
     }
 
+    public boolean canChangeStation(int vn, int vnc) {
+        return (vanBound(vn) && vanBound(vnc) && vn != vnc && state[vn][START] != -1 && state[vnc][START] != -1);
+    }
+
     //Modify PickUp Bicycles
     //pre: vn exists and  0 < TBIC <= bicnotused in vn
     //post: TBIC = ntbic | 0 < ntbic <= bicnotused in vn
     public void operatorPickUp(int vn, int ntbic) {
         state[vn][TBIC] = ntbic;
+        if (ntbic == 0) {
+            operatorDeleteStop(vn, state[vn][STOP2]);
+            operatorDeleteStop(vn, state[vn][STOP1]);
+        }
+    }
+    public boolean canPickUp(int vn, int ntbic) {
+        int tbic = est.get(state[vn][START]).getNumBicicletasNoUsadas();
+        return (ntbic <= tbic && ntbic >= 0 && vanBound(vn) && state[vn][START] != -1);
     }
 
     //Modify Drop Bicycles
     //pre: vn exists and 0 < TBIC <= bicnotused in vn | 0 < BIC1 < TBIC
     //post: BIC1 = nbic1 | 0 < nbic1 < TBIC
     public void operatorDrop(int vn, int nbic1) {
+        int tbic = est.get(state[vn][START]).getNumBicicletasNoUsadas();
         state[vn][BIC1] = nbic1;
+        if (tbic == nbic1)
+            state[vn][STOP2] = -1;
+    }
+    public boolean canDrop(int vn, int nbic1) {
+        int tbic = est.get(state[vn][START]).getNumBicicletasNoUsadas();
+        return (nbic1 <= tbic && nbic1 >= 0 && vanBound(vn) && state[vn][START] != -1);
     }
 }

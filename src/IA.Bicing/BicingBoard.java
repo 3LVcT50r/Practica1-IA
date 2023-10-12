@@ -4,25 +4,26 @@ import IA.Bicing.*;
 import java.util.*;
 import java.lang.Math;
 
-
 public class BicingBoard {
+
+    static final int START=0;
+    static final int STOP1=1;
+    static final int STOP2=2;
+    static final int TBIC=3;
+    static final int BIC1=4;
 
     //private Vector<Vector<Integer>> state;
     private int state[][];
     private int van;
     //
     public BicingBoard(Estaciones stations, int van, String type) {
-        state = new int[van][6];
+        state = new int[van][5];
         this.van = van;
 
-        if (type.equals("Basic")) {
-            //Basic initialization - 0 vans assigned to stations
-            //state = new Vector<Vector<Integer>>(van, new vector<Integer>(6,0));
-        }
-        else if (type.equals("Greedy")) {
+        if (type.equals("Greedy")) {
 
         }
-        else {
+        else if (type.equals("Mixed")) {
             // Not greedy not basic, a middle approach
             // We initialize vans assigned to random stations
             // we take the bicycles not being use and split into other two random stations, not used yet
@@ -37,51 +38,105 @@ public class BicingBoard {
             int randomIndex=0;
 
             for (int i=0; i < van; i++) {
-                // id van
-                state[i][0] = i;
                 // start station
-                state[i][1] = randStations.get(randomIndex);
+                state[i][START] = randStations.get(randomIndex);
                 // number of bicycles not used
-                int noBic=stations.get(state[i][1]).getNumBicicletasNoUsadas();
-                state[i][4] = noBic;
+                int noBic=stations.get(state[i][START]).getNumBicicletasNoUsadas();
+                state[i][TBIC] = noBic;
                 ++randomIndex;
                 // we continue only if there are bicycles not used
-                if (state[i][4] > 1) {
+                if (state[i][TBIC] > 1) {
                     double half = noBic/2.0;
-                    state[i][5] = (int)Math.ceil(half);
-                    state[i][2] = randStations.get(randomIndex);
+                    state[i][BIC1] = (int)Math.ceil(half);
+                    state[i][STOP1] = randStations.get(randomIndex);
                     ++randomIndex;
-                    state[i][3] = randStations.get(randomIndex);
+                    state[i][STOP2] = randStations.get(randomIndex);
                 }
-                else if (state[i][4] == 1) {
-                    state[i][5] = 1;
-                    state[i][2] = randStations.get(randomIndex);
-                    state[i][3] = -1;
+                else if (state[i][TBIC] == 1) {
+                    state[i][BIC1] = 1;
+                    state[i][STOP1] = randStations.get(randomIndex);
+                    state[i][STOP2] = -1;
                 }
                 else  {
-                    state[i][2] = -1;
-                    state[i][3] = -1;
+                    state[i][STOP1] = -1;
+                    state[i][STOP2] = -1;
                 }
                 ++randomIndex;
             }
         }
+        else {
+            for (int i=0; i < van; ++i) {
+                for (int j=0; j < 3; ++j) {
+                    state[i][START+j]=-1;
+                }
+            }
 
+        }
     }
     public void print() {
         for(int i=0;i<van;i++){
             System.out.print(" VanId: ");
-            System.out.print(state[i][0]);
+            System.out.print(i);
             System.out.print(" Start: ");
-            System.out.print(state[i][1]);
+            System.out.print(state[i][START]);
             System.out.print(" Station1: ");
-            System.out.print(state[i][2]);
+            System.out.print(state[i][STOP1]);
             System.out.print(" Station2: ");
-            System.out.print(state[i][3]);
-            System.out.print(" NumberBicNotUsed: ");
-            System.out.print(state[i][4]);
+            System.out.print(state[i][STOP2]);
+            System.out.print(" PickedUpBic: ");
+            System.out.print(state[i][TBIC]);
             System.out.print(" BicStation1: ");
-            System.out.println(state[i][5]);
+            System.out.println(state[i][BIC1]);
         }
     }
 
+    //( 0 <= v < this.van | sp = {0,1} )
+
+    //Swap stops between vans v1 and v2
+    //pre: v1 and v2 exist, and v1 stops in sp1 and v2 stops in sp2
+    //post: v1 stops in sp2 and v2 stops in sp1
+    public void operatorSwap(int v1, int v2, int sp1, int sp2) {
+        int aux = state[v1][STOP1+sp1];
+        state[v1][STOP1+sp1] = state[v2][STOP1+sp2];
+        state[v2][STOP1+sp2] = aux;
+    }
+
+    //Delete stop sp from van vn
+    //pre: vn exists, and stops in sp
+    //post: if vn has two stops and delete stop1, stop1 = stop2 and stop2 = -1 and b1=bt
+    //else stop1=-1 and b1=0;
+    public void operatorDeleteStop(int vn, int sp) {
+        if (sp == 2) {
+            state[vn][STOP1] = state[vn][STOP2];
+            state[vn][STOP2] = -1;
+            state[vn][BIC1] = state[vn][TBIC];
+        }
+        else {
+            state[vn][STOP1] = -1;
+            state[vn][BIC1] = 0;
+        }
+    }
+
+    //Change station
+    //pre: vn and vnc exists
+    //post: vn = vnc
+    public void operatorChangeStation(int vn, int vnc) {
+        int aux[] = state[vnc];
+        state[vnc] = state[vn];
+        state[vn] = aux;
+    }
+
+    //Modify PickUp Bicycles
+    //pre: vn exists and  0 < TBIC <= bicnotused in vn
+    //post: TBIC = ntbic | 0 < ntbic <= bicnotused in vn
+    public void operatorPickUp(int vn, int ntbic) {
+        state[vn][TBIC] = ntbic;
+    }
+
+    //Modify Drop Bicycles
+    //pre: vn exists and 0 < TBIC <= bicnotused in vn | 0 < BIC1 < TBIC
+    //post: BIC1 = nbic1 | 0 < nbic1 < TBIC
+    public void operatorDrop(int vn, int nbic1) {
+        state[vn][BIC1] = nbic1;
+    }
 }

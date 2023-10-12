@@ -1,3 +1,5 @@
+package IA.Bicing;
+
 import IA.Bicing.*;
 import java.util.*;
 import java.lang.Math;
@@ -49,11 +51,15 @@ public class BicingBoard {
                     state[i][5] = (int)Math.ceil(half);
                     state[i][2] = randStations.get(randomIndex);
                     ++randomIndex;
-                    state[i][2] = randStations.get(randomIndex);
+                    state[i][3] = randStations.get(randomIndex);
                 }
                 else if (state[i][4] == 1) {
                     state[i][5] = 1;
                     state[i][2] = randStations.get(randomIndex);
+                    state[i][3] = -1;
+                }
+                else  {
+                    state[i][2] = -1;
                     state[i][3] = -1;
                 }
                 ++randomIndex;
@@ -61,7 +67,7 @@ public class BicingBoard {
         }
 
     }
-    void print() {
+    public void print() {
         for(int i=0;i<van;i++){
             System.out.print(" VanId: ");
             System.out.print(state[i][0]);

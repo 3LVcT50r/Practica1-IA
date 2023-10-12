@@ -16,7 +16,7 @@ public class BicingBoard {
     private int state[][];
     private int van;
     private int stations;
-    private Estaciones est;
+    private static Estaciones est;
     private int Dinero;
     private int DineroKilometros;
 

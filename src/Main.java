@@ -1,8 +1,11 @@
 import IA.Bicing.*;
+
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import IA.Bicing.BicingBoard;
+import IA.Bicing.*;
+import aima.search.framework.Successor;
 
 public class Main {
     static public void printStation(Estaciones est, int i) {
@@ -25,7 +28,7 @@ public class Main {
 
         Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, x);
         BicingBoard InitialState= new BicingBoard(est, 5, input);
-
+        InitialState.print();
 
         while (sc.hasNext()) {
             input = sc.next();
@@ -62,6 +65,19 @@ public class Main {
                 int sp1 = sc.nextInt();
                 int sp2 = sc.nextInt();
                 InitialState.operatorSwap(v1,v2,sp1,sp2);
+            }
+            else if (input.equals("successors+")) {
+                List<Successor> a = new BicingSuccesors().getSuccessors(InitialState);
+                for (int i=0; i < a.size(); ++i) {
+                    System.out.println(a.get(i).getAction());
+                    BicingBoard newState = (BicingBoard) a.get(i).getState();
+                    newState.print();
+                    System.out.println();
+                }
+            }
+            else if (input.equals("successors")) {
+                List<Successor> a = new BicingSuccesors().getSuccessors(InitialState);
+                System.out.println(a.size());
             }
         }
 

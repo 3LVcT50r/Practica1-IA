@@ -79,6 +79,19 @@ public class BicingBoard {
 
         }
     }
+
+    public BicingBoard(BicingBoard board) {
+        //2d array copy
+        state = new int[board.state.length][board.state[0].length];
+        for (int i=0; i < board.state.length; ++i)
+            System.arraycopy(board.state[i], 0, state[i], 0, board.state[0].length);
+
+        van = new Integer(board.van);
+        stations = new Integer(board.stations);
+        Dinero = new Integer(board.Dinero);
+        DineroKilometros = new Integer(board.DineroKilometros);
+    }
+
     public void print() {
         for(int i=0;i<van;i++){
             System.out.print(" VanId: ");
@@ -96,11 +109,47 @@ public class BicingBoard {
         }
     }
 
-    public Integer getDinero() {
+    private int getWasteRow(int i) {
+        int priceKm1 = (state[i][TBIC]+9)/10;
+        int priceKm2 = ((state[i][TBIC]-state[i][BIC1])+9)/10;
+
+        int startX = est.get(state[i][START]).getCoordX();
+        int startY = est.get(state[i][START]).getCoordY();
+
+        int stop1X = est.get(state[i][STOP1]).getCoordX();
+        int stop1Y = est.get(state[i][STOP1]).getCoordY();
+
+        int stop2X = est.get(state[i][STOP2]).getCoordX();
+        int stop2Y = est.get(state[i][STOP2]).getCoordY();
+
+        int distStartStop1 = Math.abs(startX-stop1X)+Math.abs(startY-stop1Y)/1000;
+        int distSp1Sp2 = Math.abs(stop2X-stop1X)+Math.abs(stop2Y-stop1Y)/1000;
+
+        return distStartStop1*priceKm1+distStartStop1*priceKm2;
+    }
+
+    private int getTotalWaste() {
+        int total=0;
+        for (int i=0; i < van; ++i) {
+            total += getWasteRow(i);
+        }
+        return total;
+    }
+
+    //sfdsafjdaslkfadshfadfndladsf implemntar please
+    private int getProfitRow(int i) {
+        int demStart = state[i][START];
+        return 0;
+    }
+
+
+    public int getDinero() {
+        int dinero=0;
+
         return Dinero;
     }
 
-    public Integer getKilometers() {
+    public int getKilometers() {
         return DineroKilometros;
     }
     public int getVans() {
@@ -143,13 +192,13 @@ public class BicingBoard {
     //else stop1=-1 and b1=0;
     public void operatorDeleteStop(int vn, int sp) {
         if (sp == 2) {
-            state[vn][STOP1] = state[vn][STOP2];
             state[vn][STOP2] = -1;
             state[vn][BIC1] = state[vn][TBIC];
         }
         else {
-            state[vn][STOP1] = -1;
-            state[vn][BIC1] = 0;
+            state[vn][STOP1] = state[vn][STOP2];
+            state[vn][STOP2] = -1;
+            state[vn][BIC1] = state[vn][TBIC];
         }
     }
 
@@ -175,6 +224,7 @@ public class BicingBoard {
     //post: TBIC = ntbic | 0 < ntbic <= bicnotused in vn
     public void operatorPickUp(int vn, int ntbic) {
         state[vn][TBIC] = ntbic;
+        state[vn][BIC1] = ntbic;
         if (ntbic == 0) {
             operatorDeleteStop(vn, state[vn][STOP2]);
             operatorDeleteStop(vn, state[vn][STOP1]);

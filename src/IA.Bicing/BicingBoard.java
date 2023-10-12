@@ -17,7 +17,9 @@ public class BicingBoard {
     private int van;
     private int stations;
     private Estaciones est;
-    //
+    private int Dinero;
+    private int DineroKilometros;
+
     public BicingBoard(Estaciones est, int van, String type) {
         state = new int[van][5];
         this.van = van;
@@ -94,6 +96,13 @@ public class BicingBoard {
         }
     }
 
+    public Integer getDinero() {
+        return Dinero;
+    }
+
+    public Integer getKilometers() {
+        return DineroKilometros;
+    }
     public int getVans() {
         return van;
     }

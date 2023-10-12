@@ -98,6 +98,12 @@ public class BicingBoard {
         return van;
     }
 
+    public int getTbic(int vn) {
+        if (vanBound(vn) &&  state[vn][START] != -1)
+            return est.get(state[vn][START]).getNumBicicletasNoUsadas();
+        else return 0;
+    }
+
     public boolean vanBound(int v) {
         return (v >= 0 && v < van);
     }

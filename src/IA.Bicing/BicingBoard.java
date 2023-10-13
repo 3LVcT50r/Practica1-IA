@@ -19,6 +19,12 @@ public class BicingBoard {
     private int Dinero;
     private int DineroKilometros;
 
+    public Integer caclMoney(Estacion est) {
+        int money = 0;
+
+        return money;
+    }
+
     public BicingBoard(Estaciones est, int van, String type) {
         state = new int[van][5];
         this.van = van;

@@ -118,7 +118,7 @@ public class Main {
                 System.out.println(a.size());
             }
             else if (input.equals("hill")) {
-                Problem p = new Problem(InitialState, new BicingSuccesors(), new BicingTest(), new BicingHeurustic());
+                Problem p = new Problem(InitialState, new BicingSuccesors(), new BicingTest(), new BicingHeuristic());
                 Search s = new HillClimbingSearch();
                 SearchAgent agent = new SearchAgent(p, s);
 
@@ -128,7 +128,7 @@ public class Main {
 
                 Object o = s.getGoalState();
                 //System.out.println("Beneficio total: " + new BicingHeurustic().getHeuristicValue(o));
-                System.out.println("Beneficio total: " + new BicingHeurustic().getHeuristicValue(o));
+                System.out.println("Beneficio total: " + new BicingHeuristic().getHeuristicValue(o));
             }
             else if (input.equals("fake_hill")) {
                 for (int j=0; j < 10000; ++j) {

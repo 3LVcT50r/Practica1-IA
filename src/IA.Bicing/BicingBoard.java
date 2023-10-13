@@ -11,12 +11,11 @@ public class BicingBoard {
     static final int STOP2=2;
     static final int TBIC=3;
     static final int BIC1=4;
+    private static Estaciones est;
 
-    //private Vector<Vector<Integer>> state;
     private int state[][];
     private int van;
     private int stations;
-    private static Estaciones est;
     private int Dinero;
     private int DineroKilometros;
 
@@ -33,8 +32,6 @@ public class BicingBoard {
             // Not greedy not basic, a middle approach
             // We initialize vans assigned to random stations
             // we take the bicycles not being use and split into other two random stations, not used yet
-
-            //state = new Vector<Vector<Integer>>(van, new vector<Integer>(6,0));
 
             // Random list to randomize initial state
             List<Integer> randStations = new ArrayList<>();
@@ -107,23 +104,48 @@ public class BicingBoard {
             System.out.print(" BicStation1: ");
             System.out.println(state[i][BIC1]);
         }
+        System.out.print(" Waste: ");
+        System.out.print(getTotalWaste());
+        System.out.print(" Profit: ");
+        System.out.print(getProfit());
+        System.out.print(" Total Profit: ");
+        System.out.println(getRealProfit());
     }
 
     private int getWasteRow(int i) {
         int priceKm1 = (state[i][TBIC]+9)/10;
         int priceKm2 = ((state[i][TBIC]-state[i][BIC1])+9)/10;
 
-        int startX = est.get(state[i][START]).getCoordX();
-        int startY = est.get(state[i][START]).getCoordY();
+        int startX=0;
+        int startY=0;
 
-        int stop1X = est.get(state[i][STOP1]).getCoordX();
-        int stop1Y = est.get(state[i][STOP1]).getCoordY();
+        if (state[i][START] != -1) {
+            startX = est.get(state[i][START]).getCoordX();
+            startY = est.get(state[i][START]).getCoordY();
+        }
 
-        int stop2X = est.get(state[i][STOP2]).getCoordX();
-        int stop2Y = est.get(state[i][STOP2]).getCoordY();
+        int stop1X=0;
+        int stop1Y=0;
+        if (state[i][STOP1] != -1) {
+            stop1X = est.get(state[i][STOP1]).getCoordX();
+            stop1Y = est.get(state[i][STOP1]).getCoordY();
+        }
 
-        int distStartStop1 = Math.abs(startX-stop1X)+Math.abs(startY-stop1Y)/1000;
-        int distSp1Sp2 = Math.abs(stop2X-stop1X)+Math.abs(stop2Y-stop1Y)/1000;
+        int stop2X=0;
+        int stop2Y=0;
+        if (state[i][STOP2] != -1) {
+            stop2X = est.get(state[i][STOP2]).getCoordX();
+            stop2Y = est.get(state[i][STOP2]).getCoordY();
+        }
+
+        int distStartStop1=0;
+        int distSp1Sp2=0;
+
+        if (state[i][STOP1] != -1)
+            distStartStop1 = (Math.abs(startX-stop1X)+Math.abs(startY-stop1Y))/1000;
+
+        if (state[i][STOP1] != -1 && state[i][STOP2] != -1 )
+            distSp1Sp2 = (Math.abs(stop2X-stop1X)+Math.abs(stop2Y-stop1Y))/1000;
 
         return distStartStop1*priceKm1+distStartStop1*priceKm2;
     }
@@ -136,12 +158,59 @@ public class BicingBoard {
         return total;
     }
 
-    //sfdsafjdaslkfadshfadfndladsf implemntar please
-    private int getProfitRow(int i) {
-        int demStart = state[i][START];
-        return 0;
+    public int getStations() {
+        return stations;
     }
 
+    public int getProfit() {
+        int profit=0;
+        for (int i=0; i < stations; ++i) {
+            profit += getProfitStation(i);
+        }
+        return profit;
+    }
+
+    public int getProfitStation(int i) {
+        int dem = est.get(i).getDemanda();
+        int bicNext = est.get(i).getNumBicicletasNext();
+        int pickUp = bicPickUp(i);
+        int dropped = bicDropped(i);
+        int realBic = bicNext+dropped-pickUp;
+
+        if (realBic >= dem) {
+            if (bicNext >= dem) return 0;
+            else return realBic-bicNext;
+        }
+        else {
+            if (bicNext < dem) return realBic - bicNext;
+            else if (bicNext > dem) return realBic - dem;
+            else return 0;
+        }
+    }
+
+    public int getRealProfit() {
+        return getProfit()-getTotalWaste();
+    }
+
+    public int bicDropped(int station) {
+        int total=0;
+        for (int i=0; i < van; ++i) {
+            if (state[i][STOP1] == station)
+                total += state[i][BIC1];
+            else if (state[i][STOP2] == station)
+                total += state[i][TBIC] - state[i][BIC1];
+        }
+        return total;
+    }
+
+    public int bicPickUp(int station) {
+        int total=0;
+        for (int i=0; i < van; ++i) {
+            if (state[i][START] == station)
+                total += state[i][TBIC];
+        }
+        return total;
+    }
 
     public int getDinero() {
         int dinero=0;
@@ -198,7 +267,11 @@ public class BicingBoard {
         else {
             state[vn][STOP1] = state[vn][STOP2];
             state[vn][STOP2] = -1;
-            state[vn][BIC1] = state[vn][TBIC];
+            if (state[vn][STOP1] != -1) state[vn][BIC1] = state[vn][TBIC];
+            else {
+                state[vn][BIC1]=0;
+                state[vn][TBIC]=0;
+            }
         }
     }
 
@@ -206,17 +279,30 @@ public class BicingBoard {
         return (vanBound(vn) && stationBound(sp) && state[vn][sp] != -1);
     }
 
-    //Change station
-    //pre: vn and vnc exists
-    //post: vn = vnc
-    public void operatorChangeStation(int vn, int vnc) {
-        int aux[] = state[vnc];
-        state[vnc] = state[vn];
-        state[vn] = aux;
+    //Add start
+    //pre: vn and st exists
+    //post: vn starts in st
+    public void operatorAddStation(int vn, int st) {
+        state[vn][START] = st;
     }
 
-    public boolean canChangeStation(int vn, int vnc) {
-        return (vanBound(vn) && vanBound(vnc) && vn != vnc && state[vn][START] != -1 && state[vnc][START] != -1);
+    public boolean canAddStation(int vn, int st) {
+        for (int i=0; i < van; ++i) {
+            if (state[i][START] == st)
+                return false;
+        }
+        return (vanBound(vn) && stationBound(st) && state[vn][START] == -1);
+    }
+
+    //Add stop
+    //pre: vn and sp exists
+    //post: vn stops in sp
+    public void operatorAddStop(int vn, int st, int num) {
+        state[vn][STOP1+num] = st;
+    }
+
+    public boolean canAddStop(int vn, int st, int num) {
+        return (vanBound(vn) && stationBound(st) &&  num<=1 && num>= 0 && state[vn][STOP1+num] == -1);
     }
 
     //Modify PickUp Bicycles
@@ -231,8 +317,7 @@ public class BicingBoard {
         }
     }
     public boolean canPickUp(int vn, int ntbic) {
-        int tbic = est.get(state[vn][START]).getNumBicicletasNoUsadas();
-        return (ntbic <= tbic && ntbic >= 0 && vanBound(vn) && state[vn][START] != -1);
+        return (vanBound(vn) && state[vn][START] != -1 && ntbic <= est.get(state[vn][START]).getNumBicicletasNoUsadas() && ntbic >= 0);
     }
 
     //Modify Drop Bicycles
@@ -245,7 +330,6 @@ public class BicingBoard {
             state[vn][STOP2] = -1;
     }
     public boolean canDrop(int vn, int nbic1) {
-        int tbic = est.get(state[vn][START]).getNumBicicletasNoUsadas();
-        return (nbic1 <= tbic && nbic1 >= 0 && vanBound(vn) && state[vn][START] != -1);
+        return (vanBound(vn) && nbic1 <= est.get(state[vn][START]).getNumBicicletasNoUsadas() && nbic1 >= 0  && state[vn][START] != -1);
     }
 }

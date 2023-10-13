@@ -6,7 +6,7 @@ public class BicingHeurustic implements HeuristicFunction {
 
     public double getHeuristicValue(Object state) {
         BicingBoard board = (BicingBoard) state;
-        return board.getDinero();
+        return board.getProfit();
     }
 }
 

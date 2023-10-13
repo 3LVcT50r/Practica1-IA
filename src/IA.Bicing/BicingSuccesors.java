@@ -49,7 +49,44 @@ public class BicingSuccesors implements SuccessorFunction {
             }
         }
 
+        for (int i =0; i < board.getVans(); ++i) {
+            for (int j = 0; j < board.getStations(); ++j) {
+                if (board.canAddStation(i, j)) {
+                    BicingBoard newBoard = new BicingBoard(board);
+                    newBoard.operatorAddStation(i,j);
+                    String S=new String("add_station("+i+","+j+")");
+                    retVal.add(new Successor(S,newBoard));
+                }
+            }
+        }
 
+        for (int i =0; i < board.getVans(); ++i) {
+            for (int j = 0; j < board.getVans(); ++j) {
+                for (int k = 0; k < 2; ++k) {
+                    for (int l = 0; l < 2; ++l) {
+                        if (board.canSwap(i, j, k, l)) {
+                            BicingBoard newBoard = new BicingBoard(board);
+                            newBoard.operatorSwap(i, j, k, l);
+                            String S=new String("swap("+i+","+j+","+k+","+l+")");
+                            retVal.add(new Successor(S,newBoard));
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i =0; i < board.getVans(); ++i) {
+            for (int j = 0; j < board.getStations(); ++j) {
+                for (int k=0; k < 2; ++k) {
+                    if (board.canAddStop(i, j, k)) {
+                        BicingBoard newBoard = new BicingBoard(board);
+                        newBoard.operatorAddStop(i, j, k);
+                        String S = new String("add_stop(" + i + "," + j + "," + k + ")");
+                        retVal.add(new Successor(S, newBoard));
+                    }
+                }
+            }
+        }
 
         return retVal;
     }

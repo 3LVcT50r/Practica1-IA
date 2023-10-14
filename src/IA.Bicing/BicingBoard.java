@@ -6,19 +6,16 @@ import java.lang.Math;
 
 public class BicingBoard {
 
-    static final int START=0;
-    static final int STOP1=1;
-    static final int STOP2=2;
-    static final int TBIC=3;
-    static final int BIC1=4;
+    private static final int START=0;
+    private static final int STOP1=1;
+    private static final int STOP2=2;
+    private static final int TBIC=3;
+    private static final int BIC1=4;
     private static Estaciones est;
 
     private int state[][];
     private int van;
     private int stations;
-    private int Dinero;
-    private int DineroKilometros;
-
     public BicingBoard(Estaciones est, int van, String type) {
         state = new int[van][5];
         this.van = van;
@@ -85,8 +82,6 @@ public class BicingBoard {
 
         van = new Integer(board.van);
         stations = new Integer(board.stations);
-        Dinero = new Integer(board.Dinero);
-        DineroKilometros = new Integer(board.DineroKilometros);
     }
 
     public void print() {
@@ -150,16 +145,12 @@ public class BicingBoard {
         return distStartStop1*priceKm1+distStartStop1*priceKm2;
     }
 
-    private int getTotalWaste() {
+    public int getTotalWaste() {
         int total=0;
         for (int i=0; i < van; ++i) {
             total += getWasteRow(i);
         }
         return total;
-    }
-
-    public int getStations() {
-        return stations;
     }
 
     public int getProfit() {
@@ -192,6 +183,43 @@ public class BicingBoard {
         return getProfit()-getTotalWaste();
     }
 
+    public int lowDemandStart() {
+        int points=0;
+        for (int i=0; i < van; ++i) {
+            if (state[i][START] != -1) {
+                int dem = est.get(state[i][START]).getDemanda();
+                int bicNext = est.get(state[i][START]).getNumBicicletasNext();
+                points += bicNext - dem;
+            }
+        }
+        return points;
+
+    }
+
+    public int bonuStop() {
+        int points=0;
+        for (int i=0; i < van; ++i) {
+            if (state[i][STOP1] != -1) {
+                int dem = est.get(state[i][STOP1]).getDemanda();
+                int bicNext = est.get(state[i][STOP1]).getNumBicicletasNext();
+                int pickUp = bicPickUp(state[i][STOP1]);
+                int dropped = bicDropped(state[i][STOP1]);
+                int realBic = bicNext+dropped-pickUp;
+                points += dem - realBic;
+            }
+            if (state[i][STOP2] != -1) {
+                int dem = est.get(state[i][STOP2]).getDemanda();
+                int bicNext = est.get(state[i][STOP2]).getNumBicicletasNext();
+                int pickUp = bicPickUp(state[i][STOP2]);
+                int dropped = bicDropped(state[i][STOP2]);
+                int realBic = bicNext+dropped-pickUp;
+                points += dem - realBic;
+            }
+        }
+        return points;
+
+    }
+
     public int bicDropped(int station) {
         int total=0;
         for (int i=0; i < van; ++i) {
@@ -212,17 +240,12 @@ public class BicingBoard {
         return total;
     }
 
-    public int getDinero() {
-        int dinero=0;
-
-        return Dinero;
-    }
-
-    public int getKilometers() {
-        return DineroKilometros;
-    }
     public int getVans() {
         return van;
+    }
+
+    public int getStations() {
+        return stations;
     }
 
     public int getTbic(int vn) {

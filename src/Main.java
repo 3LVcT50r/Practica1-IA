@@ -56,7 +56,7 @@ public class Main {
 
 
         Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, x);
-        BicingBoard InitialState= new BicingBoard(est, 5, "Mixed" /*input*/);
+        BicingBoard InitialState= new BicingBoard(est, 5, "" /*input*/);
         InitialState.print();
 
         while (sc.hasNext()) {
@@ -100,24 +100,25 @@ public class Main {
             }
             else if (input.equals("successors+")) {
                 List<Successor> a = new BicingSuccesors().getSuccessors(InitialState);
-                for (int j=0; j < 100; ++j) {
-                    int best = -1000, bestState = 0;
-                    for (int i = 0; i < a.size(); ++i) {
-                        BicingBoard newState = (BicingBoard) a.get(i).getState();
-                        if (best < newState.getRealProfit()) {
-                            best = newState.getRealProfit();
-                            bestState = i;
-                        }
-                        System.out.println("Est: " + i + " Profit: " + newState.getRealProfit());
+                double best = -1000;
+                int bestState = 0;
+                for (int i = 0; i < a.size(); ++i) {
+                    BicingBoard newState = (BicingBoard) a.get(i).getState();
+                    double value = new BicingHeuristic().getHeuristicValue(newState);
+                    if (best < value) {
+                        best = value;
+                        bestState = i;
                     }
-                    System.out.println("BestState: " + bestState + " Profit: " + best);
+                    System.out.println("Est: " + i + " Profit: " + value);
                 }
+                System.out.println("BestState: " + bestState + " Profit: " + best);
             }
             else if (input.equals("successors")) {
                 List<Successor> a = new BicingSuccesors().getSuccessors(InitialState);
                 System.out.println(a.size());
             }
             else if (input.equals("hill")) {
+                //El hill por defecto dentro de su implementacion busca el menor sucesor
                 Problem p = new Problem(InitialState, new BicingSuccesors(), new BicingTest(), new BicingHeuristic());
                 Search s = new HillClimbingSearch();
                 SearchAgent agent = new SearchAgent(p, s);
@@ -127,18 +128,40 @@ public class Main {
                 printInstrumentation(agent.getInstrumentation());
 
                 Object o = s.getGoalState();
-                //System.out.println("Beneficio total: " + new BicingHeurustic().getHeuristicValue(o));
-                System.out.println("Beneficio total: " + new BicingHeuristic().getHeuristicValue(o));
+                BicingBoard finalState = (BicingBoard) o;
+                System.out.println("Heuristico total: " + -1*new BicingHeuristic().getHeuristicValue(o));
+                System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
+                System.out.println(" RealProfit: " + finalState.getRealProfit());
+                finalState.print();
+            }
+            else if (input.equals("hill2")) {
+                //El hill por defecto dentro de su implementacion busca el menor sucesor
+                Problem p = new Problem(InitialState, new BicingSuccesors(), new BicingTest(), new BicingHeuristic2());
+                Search s = new HillClimbingSearch();
+                SearchAgent agent = new SearchAgent(p, s);
+
+                System.out.println(agent.getActions().size());
+                printActions(agent.getActions());
+                printInstrumentation(agent.getInstrumentation());
+
+                Object o = s.getGoalState();
+                BicingBoard finalState = (BicingBoard) o;
+                System.out.println("Heuristico total: " + -1*new BicingHeuristic2().getHeuristicValue(o));
+                System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
+                System.out.println(" RealProfit: " + finalState.getRealProfit());
+                finalState.print();
             }
             else if (input.equals("fake_hill")) {
                 for (int j=0; j < 10000; ++j) {
                     List<Successor> a = new BicingSuccesors().getSuccessors(InitialState);
                     //System.out.println(a.size());
-                    int best = -1000, bestState = 0;
+                    double best = -1000;
+                    int bestState = 0;
                     for (int i = 0; i < a.size(); ++i) {
                         BicingBoard newState = (BicingBoard) a.get(i).getState();
-                        if (best < newState.getRealProfit()) {
-                            best = newState.getRealProfit();
+                        double value = -1*new BicingHeuristic().getHeuristicValue(newState);
+                        if (best < value) {
+                            best = value;
                             bestState = i;
                         }
                         //System.out.println("Est: " + i + " Profit: " + newState.getRealProfit());

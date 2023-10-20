@@ -139,7 +139,7 @@ public class Main {
                 SearchAgent agent = new SearchAgent(p, s);
 
                 System.out.println(agent.getActions().size());
-                printActions(agent.getActions());
+                printActions(agent.getActions()); 
                 printInstrumentation(agent.getInstrumentation());
 
                 Object o = s.getGoalState();

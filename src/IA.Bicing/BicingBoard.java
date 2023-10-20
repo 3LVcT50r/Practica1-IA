@@ -116,8 +116,8 @@ public class BicingBoard {
         //System.out.print(' ');
         //System.out.println(priceKm2);
 
-        if (priceKm1 < 0) priceKm1 = 0;
-        if (priceKm2 < 0) priceKm2 = 0;
+        //if (priceKm1 < 0) priceKm1 = 0;
+        //if (priceKm2 < 0) priceKm2 = 0;
 
         int startX=0;
         int startY=0;
@@ -327,8 +327,8 @@ public class BicingBoard {
 
     public boolean canAddStop(int vn, int st) {
         return (vanBound(vn) && stationBound(st) &&
-                state[vn][START] != st && (state[vn][STOP1] == -1 ||
-                state[vn][STOP2] == -1) && state[vn][STOP1] != state[vn][STOP2]);
+                state[vn][START] != st && state[vn][START] != -1 &&
+                (state[vn][STOP1] == -1 || state[vn][STOP2] == -1));
     }
 
     //Modify PickUp Bicycles
@@ -356,7 +356,7 @@ public class BicingBoard {
             state[vn][STOP2] = -1;
     }
     public boolean canDrop(int vn, int nbic1) {
-        return (vanBound(vn) && nbic1 <= est.get(state[vn][START]).getNumBicicletasNoUsadas() &&
-                nbic1 >= 0  && state[vn][START] != -1);
+        return (vanBound(vn) && state[vn][START] != -1 && nbic1 <= state[vn][TBIC] &&
+                nbic1 >= 0 );
     }
 }

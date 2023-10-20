@@ -22,6 +22,7 @@ public class BicingSuccesors implements SuccessorFunction {
                     BicingBoard newBoard = new BicingBoard(board);
                     newBoard.operatorPickUp(i,j);
                     String S=new String("pick_up("+i+","+j+")");
+                    S = S + newBoard.getTotalWaste();
                     retVal.add(new Successor(S,newBoard));
                 }
             }
@@ -33,6 +34,7 @@ public class BicingSuccesors implements SuccessorFunction {
                     BicingBoard newBoard = new BicingBoard(board);
                     newBoard.operatorDrop(i,j);
                     String S=new String("drop("+i+","+j+")");
+                    S = S + newBoard.getTotalWaste();
                     retVal.add(new Successor(S,newBoard));
                 }
             }
@@ -44,6 +46,7 @@ public class BicingSuccesors implements SuccessorFunction {
                     BicingBoard newBoard = new BicingBoard(board);
                     newBoard.operatorDeleteStop(i);
                     String S=new String("delete_stop("+i+","+j+")");
+                    S = S + newBoard.getTotalWaste();
                     retVal.add(new Successor(S,newBoard));
                 }
             }
@@ -55,6 +58,7 @@ public class BicingSuccesors implements SuccessorFunction {
                     BicingBoard newBoard = new BicingBoard(board);
                     newBoard.operatorAddStation(i,j);
                     String S=new String("add_station("+i+","+j+")");
+                    S = S + newBoard.getTotalWaste();
                     retVal.add(new Successor(S,newBoard));
                 }
             }
@@ -68,6 +72,7 @@ public class BicingSuccesors implements SuccessorFunction {
                             BicingBoard newBoard = new BicingBoard(board);
                             newBoard.operatorSwap(i, j, k, l);
                             String S=new String("swap("+i+","+j+","+k+","+l+")");
+                            S = S + newBoard.getTotalWaste();
                             retVal.add(new Successor(S,newBoard));
                         }
                     }
@@ -82,6 +87,7 @@ public class BicingSuccesors implements SuccessorFunction {
                         BicingBoard newBoard = new BicingBoard(board);
                         newBoard.operatorAddStop(i, j);
                         String S = new String("add_stop(" + i + "," + j + ")");
+                        S = S + newBoard.getTotalWaste();
                         retVal.add(new Successor(S, newBoard));
                     }
                 }

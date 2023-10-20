@@ -87,7 +87,7 @@ public class BicingSuccesors implements SuccessorFunction {
                 }
             }
         }
-
+        //board.print();
         return retVal;
     }
 

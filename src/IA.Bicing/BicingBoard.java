@@ -16,6 +16,7 @@ public class BicingBoard {
     private int state[][];
     private int van;
     private int stations;
+
     public BicingBoard(Estaciones est, int van, String type) {
         state = new int[van][5];
         this.van = van;
@@ -23,7 +24,7 @@ public class BicingBoard {
         this.est = est;
 
         if (type.equals("Greedy")) {
-
+            //POR MI NO LO HACEMOS: VICTOR
         }
         else if (type.equals("Mixed")) {
             // Not greedy not basic, a middle approach
@@ -34,7 +35,7 @@ public class BicingBoard {
             List<Integer> randStations = new ArrayList<>();
             for (int i=0; i < est.size(); ++i)
                 randStations.add(i);
-            Collections.shuffle(randStations);
+            //Collections.shuffle(randStations);
             int randomIndex=0;
 
             for (int i=0; i < van; i++) {
@@ -64,7 +65,7 @@ public class BicingBoard {
                 ++randomIndex;
             }
         }
-        else {
+        else if (type.equals("Basic")) {
             for (int i=0; i < van; ++i) {
                 for (int j=0; j < 3; ++j) {
                     state[i][START+j]=-1;
@@ -111,6 +112,13 @@ public class BicingBoard {
         int priceKm1 = (state[i][TBIC]+9)/10;
         int priceKm2 = ((state[i][TBIC]-state[i][BIC1])+9)/10;
 
+        //System.out.print(priceKm1);
+        //System.out.print(' ');
+        //System.out.println(priceKm2);
+
+        if (priceKm1 < 0) priceKm1 = 0;
+        if (priceKm2 < 0) priceKm2 = 0;
+
         int startX=0;
         int startY=0;
 
@@ -150,6 +158,7 @@ public class BicingBoard {
         for (int i=0; i < van; ++i) {
             total += getWasteRow(i);
         }
+        //System.out.println(total);
         return total;
     }
 
@@ -193,7 +202,6 @@ public class BicingBoard {
             }
         }
         return points;
-
     }
 
     public int bonuStop() {
@@ -217,7 +225,6 @@ public class BicingBoard {
             }
         }
         return points;
-
     }
 
     public int bicDropped(int station) {
@@ -275,7 +282,8 @@ public class BicingBoard {
 
     public boolean canSwap(int v1, int v2, int sp1, int sp2) {
         return (vanBound(v1) && vanBound(v2) && stationBound(sp1) &&
-                stationBound(sp2) && v1 != v2 && sp1 != sp2 && state[v1][sp1] != -1 && state[v2][sp2] != -1);
+                stationBound(sp2) && v1 != v2 && sp1 != sp2 &&
+                state[v1][sp1] != -1 && state[v2][sp2] != -1);
     }
 
     //Delete stop sp from van vn
@@ -318,14 +326,15 @@ public class BicingBoard {
     }
 
     //Add stop
-    //pre: vn and sp exists
-    //post: vn stops in sp
+    //pre: vn and st exists
+    //post: vn stops in st
     public void operatorAddStop(int vn, int st, int num) {
         state[vn][STOP1+num] = st;
     }
 
     public boolean canAddStop(int vn, int st, int num) {
-        return (vanBound(vn) && stationBound(st) &&  num<=1 && num>= 0 && state[vn][STOP1+num] == -1);
+        //VICTOR: veo logico que antes de añadir una parada, se necesite primero que haya una stacion de origen vamos.
+        return (vanBound(vn) && stationBound(st) &&  num<=1 && num>= 0 && state[vn][STOP1+num] == -1 && state[vn][START] != -1);
     }
 
     //Modify PickUp Bicycles
@@ -340,7 +349,7 @@ public class BicingBoard {
         }
     }
     public boolean canPickUp(int vn, int ntbic) {
-        return (vanBound(vn) && state[vn][START] != -1 && ntbic <= est.get(state[vn][START]).getNumBicicletasNoUsadas() && ntbic >= 0);
+        return (vanBound(vn) && state[vn][START] != -1 && ntbic <= est.get(state[vn][START]).getNumBicicletasNoUsadas() && ntbic >= 0 && ntbic <= 30);
     }
 
     //Modify Drop Bicycles
@@ -353,6 +362,7 @@ public class BicingBoard {
             state[vn][STOP2] = -1;
     }
     public boolean canDrop(int vn, int nbic1) {
-        return (vanBound(vn) && nbic1 <= est.get(state[vn][START]).getNumBicicletasNoUsadas() && nbic1 >= 0  && state[vn][START] != -1);
+        return (vanBound(vn) && nbic1 <= est.get(state[vn][START]).getNumBicicletasNoUsadas() &&
+                nbic1 >= 0  && state[vn][START] != -1);
     }
 }

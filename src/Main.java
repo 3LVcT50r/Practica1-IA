@@ -52,11 +52,9 @@ public class Main {
         int x = ran.nextInt(100);
 
         System.out.println("IntialState type (Greedy, Mixed, Basic)");
-        //input = sc.next();
 
-
-        Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, x);
-        BicingBoard InitialState= new BicingBoard(est, 5, "" /*input*/);
+        Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
+        BicingBoard InitialState= new BicingBoard(est, 5, "Basic" );
         InitialState.print();
 
         while (sc.hasNext()) {

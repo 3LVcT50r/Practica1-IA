@@ -326,9 +326,11 @@ public class BicingBoard {
     }
 
     public boolean canAddStop(int vn, int st) {
-        return (vanBound(vn) && stationBound(st) &&
+        boolean cond = (vanBound(vn) && stationBound(st) &&
                 state[vn][START] != st && state[vn][START] != -1 &&
                 (state[vn][STOP1] == -1 || state[vn][STOP2] == -1));
+        if (state[vn][STOP1] == st) return false;
+        return cond;
     }
 
     //Modify PickUp Bicycles
@@ -356,6 +358,21 @@ public class BicingBoard {
             state[vn][STOP2] = -1;
     }
     public boolean canDrop(int vn, int nbic1) {
+        return (vanBound(vn) && state[vn][START] != -1 && nbic1 <= state[vn][TBIC] &&
+                nbic1 >= 0 );
+    }
+
+    // Change stop
+    // pre:
+    // post:
+    public void operatorChangeStop1(int vn, int sp) {
+        state[vn][]
+    }
+
+    public void operatorChangeStop2(int vn, int sp) {
+    }
+
+    public boolean operatorChangeStop(int vn, int nbic1) {
         return (vanBound(vn) && state[vn][START] != -1 && nbic1 <= state[vn][TBIC] &&
                 nbic1 >= 0 );
     }

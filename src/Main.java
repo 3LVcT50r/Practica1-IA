@@ -53,7 +53,7 @@ public class Main {
 
         System.out.println("IntialState type (Greedy, Mixed, Basic)");
 
-        Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
+        Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, x);
         BicingBoard InitialState= new BicingBoard(est, 5, "Basic" );
         InitialState.print();
 
@@ -139,7 +139,7 @@ public class Main {
                 SearchAgent agent = new SearchAgent(p, s);
 
                 System.out.println(agent.getActions().size());
-                printActions(agent.getActions()); 
+                printActions(agent.getActions());
                 printInstrumentation(agent.getInstrumentation());
 
                 Object o = s.getGoalState();

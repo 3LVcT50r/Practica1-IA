@@ -326,7 +326,9 @@ public class BicingBoard {
     }
 
     public boolean canAddStop(int vn, int st) {
-        return (vanBound(vn) && stationBound(st) && state[vn][START] != st && (state[vn][STOP1] == -1 || state[vn][STOP2] == -1));
+        return (vanBound(vn) && stationBound(st) &&
+                state[vn][START] != st && (state[vn][STOP1] == -1 ||
+                state[vn][STOP2] == -1) && state[vn][STOP1] != state[vn][STOP2]);
     }
 
     //Modify PickUp Bicycles

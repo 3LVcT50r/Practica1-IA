@@ -362,18 +362,17 @@ public class BicingBoard {
                 nbic1 >= 0 );
     }
 
-    // Change stop
     // pre:
     // post:
     public void operatorChangeStop1(int vn, int sp) {
-        state[vn][]
+        state[vn][STOP1] = sp;
     }
 
     public void operatorChangeStop2(int vn, int sp) {
+        state[vn][STOP2] = sp;
     }
 
-    public boolean operatorChangeStop(int vn, int nbic1) {
-        return (vanBound(vn) && state[vn][START] != -1 && nbic1 <= state[vn][TBIC] &&
-                nbic1 >= 0 );
+    public boolean canChangeStop(int vn, int sp, int i) {
+        return (vanBound(vn) && state[vn][STOP1+i] != -1);
     }
 }

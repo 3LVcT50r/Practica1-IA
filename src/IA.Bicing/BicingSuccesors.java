@@ -93,6 +93,29 @@ public class BicingSuccesors implements SuccessorFunction {
                 }
             }
         }
+
+        for (int i = 0; i < board.getVans(); ++i) {
+            for (int j = 0; j < board.getStations(); ++j) {
+                if (board.canChangeStop(i, j, 0)) {
+                    BicingBoard newBoard = new BicingBoard(board);
+                    newBoard.operatorChangeStop1(i, j);
+                    String S=new String("change_stop1("+i+","+j+")");
+                    S = S + newBoard.getTotalWaste();
+                    retVal.add(new Successor(S,newBoard));
+                }
+            }
+        }
+        for (int i = 0; i < board.getVans(); ++i) {
+            for (int j = 0; j < board.getStations(); ++j) {
+                if (board.canChangeStop(i, j, 1)) {
+                    BicingBoard newBoard = new BicingBoard(board);
+                    newBoard.operatorChangeStop2(i, j);
+                    String S=new String("change_stop2("+i+","+j+")");
+                    S = S + newBoard.getTotalWaste();
+                    retVal.add(new Successor(S,newBoard));
+                }
+            }
+        }
         //board.print();
         return retVal;
     }

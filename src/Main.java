@@ -76,8 +76,7 @@ public class Main {
             }
             else if (input.equals("delete_stop")) {
                 int vn = sc.nextInt();
-                int sp = sc.nextInt();
-                InitialState.operatorDeleteStop(vn, sp);
+                InitialState.operatorDeleteStop(vn);
             }
             else if (input.equals("pick_up")) {
                 int vn = sc.nextInt();
@@ -131,6 +130,7 @@ public class Main {
                 System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
                 System.out.println(" RealProfit: " + finalState.getRealProfit());
                 finalState.print();
+                printAllStations(est, finalState);
             }
             else if (input.equals("hill2")) {
                 //El hill por defecto dentro de su implementacion busca el menor sucesor

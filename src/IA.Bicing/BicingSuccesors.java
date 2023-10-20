@@ -40,9 +40,9 @@ public class BicingSuccesors implements SuccessorFunction {
 
         for (int i =0; i < board.getVans(); ++i) {
             for (int j = 2; j > 0; --j) {
-                if (board.canDeleteStop(i, j)) {
+                if (board.canDeleteStop(i)) {
                     BicingBoard newBoard = new BicingBoard(board);
-                    newBoard.operatorDeleteStop(i,j);
+                    newBoard.operatorDeleteStop(i);
                     String S=new String("delete_stop("+i+","+j+")");
                     retVal.add(new Successor(S,newBoard));
                 }
@@ -78,10 +78,10 @@ public class BicingSuccesors implements SuccessorFunction {
         for (int i =0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
                 for (int k=0; k < 2; ++k) {
-                    if (board.canAddStop(i, j, k)) {
+                    if (board.canAddStop(i, j)) {
                         BicingBoard newBoard = new BicingBoard(board);
-                        newBoard.operatorAddStop(i, j, k);
-                        String S = new String("add_stop(" + i + "," + j + "," + k + ")");
+                        newBoard.operatorAddStop(i, j);
+                        String S = new String("add_stop(" + i + "," + j + ")");
                         retVal.add(new Successor(S, newBoard));
                     }
                 }

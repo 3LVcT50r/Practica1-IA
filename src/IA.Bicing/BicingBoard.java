@@ -179,13 +179,9 @@ public class BicingBoard {
 
         if (realBic >= dem) {
             if (bicNext >= dem) return 0;
-            else return realBic-bicNext;
+            else return dem-bicNext;
         }
-        else {
-            if (bicNext < dem) return realBic - bicNext;
-            else if (bicNext > dem) return realBic - dem;
-            else return 0;
-        }
+        else return dropped-pickUp;
     }
 
     public int getRealProfit() {

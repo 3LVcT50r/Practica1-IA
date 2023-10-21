@@ -270,26 +270,30 @@ public class BicingBoard2 {
     }
 
     public boolean canAddStation(int vn, int st, int ntbic, int stp) {
+        //System.out.println("HOLA");
         for (int i=0; i < van; ++i) {
             if (state[i][START] == st)
                 return false;
         }
 
         return vanBound(vn) && stationBound(st) && state[vn][START] == -1 &&
-                ntbic <= est.get(state[vn][START]).getNumBicicletasNoUsadas() &&
+                ntbic <= est.get(st).getNumBicicletasNoUsadas() &&
                 ntbic >= 0 && ntbic <= 30 && state[vn][STOP1] == -1 && state[vn][START] != stp;
+
+        //System.out.println(cond);
     }
 
     public boolean canAddStop(int vn, int st, int ntbic) {
         boolean cond = false;
+        if (state[vn][START] == -1) return false;
+
         if (state[vn][STOP1] == -1) {
             cond = true;
         }
         else if (state[vn][STOP2] == -1) {
-            cond = state[vn][STOP1] != -1;
+            cond = state[vn][STOP1] != -1 && state[vn][START] != -1 && ntbic <= est.get(state[vn][START]).getNumBicicletasNoUsadas();
         }
         return cond && vanBound(vn) && stationBound(st) && state[vn][START] != st &&
-                ntbic <= est.get(state[vn][START]).getNumBicicletasNoUsadas() &&
                 ntbic >= 0 && ntbic <= 30;
     }
 

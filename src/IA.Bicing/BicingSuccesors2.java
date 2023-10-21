@@ -20,6 +20,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
             for (int j = 0; j < board.getVans(); ++j) {
                 for (int k = 0; k < 2; ++k) {
                     for (int l = 0; l < 2; ++l) {
+                        //System.out.println("HOLA1");
                         if (board.canSwap(i, j, k, l)) {
                             BicingBoard2 newBoard = new BicingBoard2(board);
                             newBoard.operatorSwap(i, j, k, l);
@@ -34,6 +35,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
 
         for (int i = 0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
+                //System.out.println("HOLA2");
                 if (board.canChangeStop(i, j, 0)) {
                     BicingBoard2 newBoard = new BicingBoard2(board);
                     newBoard.operatorChangeStop1(i, j);
@@ -45,6 +47,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
         }
         for (int i = 0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
+                //System.out.println("HOLA3");
                 if (board.canChangeStop(i, j, 1)) {
                     BicingBoard2 newBoard = new BicingBoard2(board);
                     newBoard.operatorChangeStop2(i, j);
@@ -56,10 +59,14 @@ public class BicingSuccesors2 implements SuccessorFunction {
         }
 
         for (int i = 0; i < board.getVans(); ++i) {
+            //System.out.println("HOLA?");
             for (int j = 0; j < board.getStations(); ++j) {
+                //System.out.println("HOLA??");
                 for (int k = 0; k < board.getStations(); ++k) {
-                    if (k != j) {
-                        for (int l = 0; l < board.getTbic(i); ++l) {
+                    //if (k != j) {
+                    //System.out.println("HOLA???");
+                        for (int l = 0; l <= 30; ++l) {
+                            //System.out.println("HOLA4");
                             if (board.canAddStation(i, j, l, k)) {
                                 BicingBoard2 newBoard = new BicingBoard2(board);
                                 newBoard.operatorAddStation(i, j, l, k);
@@ -68,14 +75,15 @@ public class BicingSuccesors2 implements SuccessorFunction {
                                 retVal.add(new Successor(S, newBoard));
                             }
                         }
-                    }
+                    //}
                 }
             }
         }
 
         for (int i = 0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
-                for (int k = 0; k < board.getTbic(i); ++k) {
+                for (int k = 0; k <= 30; ++k) {
+                    //System.out.println("HOLA5");
                     if (board.canAddStop(i, j, k)) {
                         BicingBoard2 newBoard = new BicingBoard2(board);
                         newBoard.operatorAddStop(i, j, k);

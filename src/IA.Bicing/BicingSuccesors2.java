@@ -26,7 +26,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
                             BicingBoard2 newBoard = new BicingBoard2(board);
                             newBoard.operatorSwap(i, j, k, l);
                             String S=new String("swap("+i+","+j+","+k+","+l+")");
-                            S = S + newBoard.getTotalWaste();
+                            S = S + newBoard.getRealProfit() + " " + newBoard.getTotalWaste();
                             retVal.add(new Successor(S,newBoard));
                         }
                     }
@@ -79,7 +79,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
                                 BicingBoard2 newBoard = new BicingBoard2(board);
                                 newBoard.operatorAddStation(i, j, l, k);
                                 String S = new String("add_station(" + i + "," + j + "," + l + "," + k + ")");
-                                S = S + newBoard.getTotalWaste();
+                                S = S + newBoard.getRealProfit() + " " + newBoard.getTotalWaste();
                                 retVal.add(new Successor(S, newBoard));
                             }
                         }
@@ -96,7 +96,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
                         BicingBoard2 newBoard = new BicingBoard2(board);
                         newBoard.operatorAddStop(i, j, k);
                         String S = new String("add_stop(" + i + "," + j + "," + k + ")");
-                        S = S + newBoard.getTotalWaste();
+                        S = S + newBoard.getRealProfit() + " " + newBoard.getTotalWaste();
                         retVal.add(new Successor(S, newBoard));
                     }
                 }
@@ -109,7 +109,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
                     BicingBoard2 newBoard = new BicingBoard2(board);
                     newBoard.operatorPickUp(i,j);
                     String S=new String("pick_up("+i+","+j+")");
-                    S = S + newBoard.getTotalWaste();
+                    S = S + newBoard.getRealProfit() + " " + newBoard.getTotalWaste();
                     retVal.add(new Successor(S,newBoard));
                 }
             }
@@ -121,7 +121,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
                     BicingBoard2 newBoard = new BicingBoard2(board);
                     newBoard.operatorDrop(i,j);
                     String S=new String("drop("+i+","+j+")");
-                    S = S + newBoard.getTotalWaste();
+                    S = S + newBoard.getRealProfit() + " " + newBoard.getTotalWaste();
                     retVal.add(new Successor(S,newBoard));
                 }
             }
@@ -133,8 +133,22 @@ public class BicingSuccesors2 implements SuccessorFunction {
                     BicingBoard2 newBoard = new BicingBoard2(board);
                     newBoard.operatorSwitchBicis(i,j);
                     String S=new String("switch("+i+","+j+")");
-                    S = S + newBoard.getTotalWaste();
+                    S = S + newBoard.getRealProfit() + " " + newBoard.getTotalWaste();
                     retVal.add(new Successor(S,newBoard));
+                }
+            }
+        }
+
+        for (int i = 0; i < board.getVans(); ++i) {
+            for (int j = 0; j < board.getStations(); ++j) {
+                for (int k = 0; k <= 30; ++k) {
+                    if (board.canAddStop2(i, j, k)) {
+                        BicingBoard2 newBoard = new BicingBoard2(board);
+                        newBoard.operatorAddStop2(i, j, k);
+                        String S=new String("add_stop2("+i+","+j+")");
+                        S = S + newBoard.getRealProfit() + " " + newBoard.getTotalWaste();
+                        retVal.add(new Successor(S,newBoard));
+                    }
                 }
             }
         }

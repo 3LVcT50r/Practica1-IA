@@ -61,6 +61,39 @@ public class Main2 {
         BicingBoard2 InitialState= new BicingBoard2(est, 5, "Basic" );
         InitialState.print();
 
+        //Hill1
+        Problem p = new Problem(InitialState, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic3());
+        Search s = new HillClimbingSearch();
+        SearchAgent agent = new SearchAgent(p, s);
+
+        System.out.println(agent.getActions().size());
+        printActions(agent.getActions());
+        printInstrumentation(agent.getInstrumentation());
+
+        Object o = s.getGoalState();
+        BicingBoard2 finalState = (BicingBoard2) o;
+        System.out.println("Heuristico total: " + -1*new BicingHeuristic3().getHeuristicValue(o));
+        System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
+        System.out.println(" RealProfit: " + finalState.getRealProfit());
+        finalState.print();
+
+        //Hill2
+        Problem p1 = new Problem(InitialState, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic4());
+        Search s1 = new HillClimbingSearch();
+        SearchAgent agent1 = new SearchAgent(p1, s1);
+
+        System.out.println(agent1.getActions().size());
+        printActions(agent1.getActions());
+        printInstrumentation(agent1.getInstrumentation());
+
+        Object o1 = s1.getGoalState();
+        BicingBoard2 finalState1 = (BicingBoard2) o1;
+        System.out.println("Heuristico total: " + -1*new BicingHeuristic4().getHeuristicValue(o1));
+        System.out.print("Waste: " + finalState1.getTotalWaste() + " ProfitBic: " + finalState1.getProfit());
+        System.out.println(" RealProfit: " + finalState1.getRealProfit());
+        finalState1.print();
+        //printAllStations(est, finalState);
+
         while (sc.hasNext()) {
             input = sc.next();
             if (input.equals("print_state")) {
@@ -92,6 +125,7 @@ public class Main2 {
                 List<Successor> a = new BicingSuccesors2().getSuccessors(InitialState);
                 System.out.println(a.size());
             }
+            /*
             else if (input.equals("hill")) {
                 Problem p = new Problem(InitialState, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic3());
                 Search s = new HillClimbingSearch();
@@ -126,6 +160,7 @@ public class Main2 {
                 finalState.print();
                 //printAllStations(est, finalState);
             }
+            */
         }
     }
 }

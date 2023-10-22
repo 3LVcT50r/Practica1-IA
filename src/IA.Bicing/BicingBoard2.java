@@ -164,7 +164,7 @@ public class BicingBoard2 {
         if (state[i][STOP1] != -1 && state[i][STOP2] != -1 )
             distSp1Sp2 = (Math.abs(stop2X-stop1X)+Math.abs(stop2Y-stop1Y))/1000;
 
-        return distStartStop1*priceKm1+distStartStop1*priceKm2;
+        return distStartStop1*priceKm1+distSp1Sp2*priceKm2;
     }
 
     public int getTotalWaste() {
@@ -314,6 +314,16 @@ public class BicingBoard2 {
         else if (state[vn][STOP2] == -1) state[vn][STOP2] = st;
     }
 
+    public void operatorAddStop2(int vn, int st, int nbic) {
+        state[vn][STOP2] = st;
+        state[vn][BIC1] -= nbic;
+    }
+
+    public boolean canAddStop2(int vn, int st, int nbic) {
+        return vanBound(vn) && stationBound(st) && state[vn][STOP1] != -1 &&
+                nbic <= state[vn][TBIC];
+    }
+
     public void operatorPickUp(int vn, int ntbic) {
         state[vn][TBIC] = ntbic;
         state[vn][BIC1] = ntbic;
@@ -341,6 +351,7 @@ public class BicingBoard2 {
     }
 
     public boolean canSwitchBicis(int vn, int nbicis) {
-        return vanBound(vn) && nbicis >= -state[vn][TBIC]+1 && nbicis <= state[vn][TBIC] && ;
+        return vanBound(vn) && nbicis >= -state[vn][TBIC]+1 && nbicis <= state[vn][TBIC] &&
+                state[vn][STOP1] != -1 && state[vn][STOP2] != -1;
     }
 }

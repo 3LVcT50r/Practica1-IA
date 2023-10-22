@@ -38,26 +38,30 @@ public class BicingSuccesors2 implements SuccessorFunction {
             for (int j = 0; j < board.getStations(); ++j) {
                 //System.out.println("HOLA2");
                 for (int k = 0; k <= 30; ++k) {
-                    if (board.canChangeStop1(i, j, 0)) {
+                    if (board.canChangeStop1(i, j, k)) {
                         //System.out.println("HOLA2");
                         BicingBoard2 newBoard = new BicingBoard2(board);
                         newBoard.operatorChangeStop1(i, j, k);
-                        String S = new String("change_stop1(" + i + "," + j + ")");
-                        S = S + newBoard.getTotalWaste();
+                        String S = new String("change_stop1(" + i + "," + j + "," + k + ")");
+                        S = S + newBoard.getRealProfit() + " " + newBoard.getTotalWaste();
                         retVal.add(new Successor(S, newBoard));
                     }
                 }
             }
         }
+
         for (int i = 0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
-                //System.out.println("HOLA3");
-                if (board.canChangeStop2(i, j)) {
-                    BicingBoard2 newBoard = new BicingBoard2(board);
-                    newBoard.operatorChangeStop2(i, j);
-                    String S=new String("change_stop2("+i+","+j+")");
-                    S = S + newBoard.getTotalWaste();
-                    retVal.add(new Successor(S,newBoard));
+                //System.out.println("HOLA2");
+                for (int k = 0; k <= 30; ++k) {
+                    if (board.canChangeStop2(i, j, k)) {
+                        //System.out.println("HOLA2");
+                        BicingBoard2 newBoard = new BicingBoard2(board);
+                        newBoard.operatorChangeStop2(i, j, k);
+                        String S = new String("change_stop1(" + i + "," + j + "," + k + ")");
+                        S = S + newBoard.getRealProfit() + " " + newBoard.getTotalWaste();
+                        retVal.add(new Successor(S, newBoard));
+                    }
                 }
             }
         }

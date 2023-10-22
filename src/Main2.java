@@ -57,8 +57,8 @@ public class Main2 {
 
         System.out.println("IntialState type (Greedy, Mixed, Basic)");
 
-        Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
-        BicingBoard2 InitialState= new BicingBoard2(est, 5, "Basic" );
+        Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, x);
+        BicingBoard2 InitialState= new BicingBoard2(est, 5, "Mixed" );
         InitialState.print();
 
         while (sc.hasNext()) {
@@ -107,7 +107,7 @@ public class Main2 {
                 System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
                 System.out.println(" RealProfit: " + finalState.getRealProfit());
                 finalState.print();
-                printAllStations(est, finalState);
+                //printAllStations(est, finalState);
             }
             else if (input.equals("hill2")) {
                 Problem p = new Problem(InitialState, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic4());
@@ -124,7 +124,7 @@ public class Main2 {
                 System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
                 System.out.println(" RealProfit: " + finalState.getRealProfit());
                 finalState.print();
-                printAllStations(est, finalState);
+                //printAllStations(est, finalState);
             }
         }
     }

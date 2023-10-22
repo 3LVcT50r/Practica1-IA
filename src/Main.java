@@ -130,7 +130,7 @@ public class Main {
                 System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
                 System.out.println(" RealProfit: " + finalState.getRealProfit());
                 finalState.print();
-                printAllStations(est, finalState);
+                //printAllStations(est, finalState);
             }
             else if (input.equals("hill2")) {
                 //El hill por defecto dentro de su implementacion busca el menor sucesor

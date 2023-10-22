@@ -22,6 +22,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
                     for (int l = 0; l < 2; ++l) {
                         //System.out.println("HOLA1");
                         if (board.canSwap(i, j, k, l)) {
+                            //System.out.println("HOLA1");
                             BicingBoard2 newBoard = new BicingBoard2(board);
                             newBoard.operatorSwap(i, j, k, l);
                             String S=new String("swap("+i+","+j+","+k+","+l+")");
@@ -37,6 +38,7 @@ public class BicingSuccesors2 implements SuccessorFunction {
             for (int j = 0; j < board.getStations(); ++j) {
                 //System.out.println("HOLA2");
                 if (board.canChangeStop(i, j, 0)) {
+                    //System.out.println("HOLA2");
                     BicingBoard2 newBoard = new BicingBoard2(board);
                     newBoard.operatorChangeStop1(i, j);
                     String S=new String("change_stop1("+i+","+j+")");

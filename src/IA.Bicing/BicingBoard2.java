@@ -250,16 +250,21 @@ public class BicingBoard2 {
                 stationBound(sp2) && v1 != v2 && sp1 != sp2 &&
                 state[v1][sp1] != -1 && state[v2][sp2] != -1);
     }
-    public void operatorChangeStop1(int vn, int sp) {
+    public void operatorChangeStop1(int vn, int sp, int nbicis) {
         state[vn][STOP1] = sp;
+        state[vn][BIC1] = nbicis;
     }
 
     public void operatorChangeStop2(int vn, int sp) {
         state[vn][STOP2] = sp;
     }
 
-    public boolean canChangeStop(int vn, int sp, int i) {
-        return (vanBound(vn) && state[vn][STOP1+i] != -1);
+    public boolean canChangeStop1(int vn, int sp, int nbicis) {
+        return (vanBound(vn) && state[vn][STOP1] != -1 && state[vn][TBIC] >= nbicis);
+    }
+
+    public boolean canChangeStop2(int vn, int sp) {
+        return (vanBound(vn) && state[vn][STOP2] != -1);
     }
 
     public void operatorAddStation(int vn, int st, int npick, int stp) {
@@ -327,4 +332,11 @@ public class BicingBoard2 {
                 nbic1 >= 0 );
     }
 
+    public void operatorSwitchBicis (int vn, int nbicis) {
+        state[vn][BIC1] = state[vn][TBIC]- nbicis;
+    }
+
+    public boolean canSwitchBicis(int vn, int nbicis) {
+        return vanBound(vn) && nbicis >= -state[vn][TBIC]+1 && nbicis <= state[vn][TBIC] && ;
+    }
 }

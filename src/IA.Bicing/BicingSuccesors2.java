@@ -37,20 +37,22 @@ public class BicingSuccesors2 implements SuccessorFunction {
         for (int i = 0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
                 //System.out.println("HOLA2");
-                if (board.canChangeStop(i, j, 0)) {
-                    //System.out.println("HOLA2");
-                    BicingBoard2 newBoard = new BicingBoard2(board);
-                    newBoard.operatorChangeStop1(i, j);
-                    String S=new String("change_stop1("+i+","+j+")");
-                    S = S + newBoard.getTotalWaste();
-                    retVal.add(new Successor(S,newBoard));
+                for (int k = 0; k <= 30; ++k) {
+                    if (board.canChangeStop1(i, j, 0)) {
+                        //System.out.println("HOLA2");
+                        BicingBoard2 newBoard = new BicingBoard2(board);
+                        newBoard.operatorChangeStop1(i, j, k);
+                        String S = new String("change_stop1(" + i + "," + j + ")");
+                        S = S + newBoard.getTotalWaste();
+                        retVal.add(new Successor(S, newBoard));
+                    }
                 }
             }
         }
         for (int i = 0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
                 //System.out.println("HOLA3");
-                if (board.canChangeStop(i, j, 1)) {
+                if (board.canChangeStop2(i, j)) {
                     BicingBoard2 newBoard = new BicingBoard2(board);
                     newBoard.operatorChangeStop2(i, j);
                     String S=new String("change_stop2("+i+","+j+")");
@@ -115,6 +117,18 @@ public class BicingSuccesors2 implements SuccessorFunction {
                     BicingBoard2 newBoard = new BicingBoard2(board);
                     newBoard.operatorDrop(i,j);
                     String S=new String("drop("+i+","+j+")");
+                    S = S + newBoard.getTotalWaste();
+                    retVal.add(new Successor(S,newBoard));
+                }
+            }
+        }
+
+        for (int i = 0; i < board.getVans(); ++i) {
+            for (int j = -30; j <= 30; ++j) {
+                if (board.canSwitchBicis(i, j)) {
+                    BicingBoard2 newBoard = new BicingBoard2(board);
+                    newBoard.operatorSwitchBicis(i,j);
+                    String S=new String("switch("+i+","+j+")");
                     S = S + newBoard.getTotalWaste();
                     retVal.add(new Successor(S,newBoard));
                 }

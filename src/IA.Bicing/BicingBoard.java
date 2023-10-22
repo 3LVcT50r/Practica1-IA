@@ -16,6 +16,8 @@ public class BicingBoard {
     private int state[][];
     private int van;
     private int stations;
+    private int dist1;
+    private int dist2;
 
     public BicingBoard(Estaciones est, int van, String type) {
         state = new int[van][5];
@@ -84,6 +86,12 @@ public class BicingBoard {
         van = new Integer(board.van);
         stations = new Integer(board.stations);
     }
+    public int getDist1() {
+        return this.dist1;
+    }
+    public int getDist2() {
+        return this.dist2;
+    }
 
     public void print() {
         for(int i=0;i<van;i++){
@@ -150,7 +158,10 @@ public class BicingBoard {
         if (state[i][STOP1] != -1 && state[i][STOP2] != -1 )
             distSp1Sp2 = (Math.abs(stop2X-stop1X)+Math.abs(stop2Y-stop1Y))/1000;
 
-        return distStartStop1*priceKm1+distStartStop1*priceKm2;
+        this.dist1 = distStartStop1;
+        this.dist2 = distSp1Sp2;
+
+        return distStartStop1*priceKm1+distSp1Sp2*priceKm2;
     }
 
     public int getTotalWaste() {
@@ -364,6 +375,7 @@ public class BicingBoard {
 
     // pre:
     // post:
+
     public void operatorChangeStop1(int vn, int sp) {
         state[vn][STOP1] = sp;
     }
@@ -372,7 +384,14 @@ public class BicingBoard {
         state[vn][STOP2] = sp;
     }
 
-    public boolean canChangeStop(int vn, int sp, int i) {
-        return (vanBound(vn) && state[vn][STOP1+i] != -1);
+    public boolean canChangeStop1(int vn, int sp) {
+        return (vanBound(vn) && state[vn][STOP1] != -1 &&  state[vn][STOP1] != sp);
     }
+
+    public boolean canChangeStop2(int vn, int sp) {
+        return vanBound(vn) && state[vn][STOP1] != -1 && state[vn][STOP2] != sp &&
+                state[vn][STOP2] != -1 && state[vn][STOP1] != state[vn][STOP2];
+    }
+
+
 }

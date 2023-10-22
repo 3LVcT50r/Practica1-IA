@@ -96,7 +96,7 @@ public class BicingSuccesors implements SuccessorFunction {
 
         for (int i = 0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
-                if (board.canChangeStop(i, j, 0)) {
+                if (board.canChangeStop1(i, j)) {
                     BicingBoard newBoard = new BicingBoard(board);
                     newBoard.operatorChangeStop1(i, j);
                     String S=new String("change_stop1("+i+","+j+")");
@@ -107,7 +107,7 @@ public class BicingSuccesors implements SuccessorFunction {
         }
         for (int i = 0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
-                if (board.canChangeStop(i, j, 1)) {
+                if (board.canChangeStop2(i, j)) {
                     BicingBoard newBoard = new BicingBoard(board);
                     newBoard.operatorChangeStop2(i, j);
                     String S=new String("change_stop2("+i+","+j+")");
@@ -116,6 +116,8 @@ public class BicingSuccesors implements SuccessorFunction {
                 }
             }
         }
+
+
         //board.print();
         return retVal;
     }

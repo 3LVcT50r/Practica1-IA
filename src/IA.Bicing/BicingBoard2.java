@@ -14,6 +14,9 @@ public class BicingBoard2 {
     private int state[][];
     private int van;
     private int stations;
+    private int dist1;
+    private int dist2;
+
     public BicingBoard2(Estaciones est, int van, String type) {
         state = new int[van][5];
         this.van = van;
@@ -132,6 +135,13 @@ public class BicingBoard2 {
         return total;
     }
 
+    public int getDist1() {
+        return this.dist1;
+    }
+    public int getDist2() {
+        return this.dist2;
+    }
+
     public int bicPickUp(int station) {
         int total=0;
         for (int i=0; i < van; ++i) {
@@ -183,6 +193,8 @@ public class BicingBoard2 {
         if (state[i][STOP1] != -1 && state[i][STOP2] != -1 )
             distSp1Sp2 = (Math.abs(stop2X-stop1X)+Math.abs(stop2Y-stop1Y))/1000;
 
+        this.dist1 = distStartStop1;
+        this.dist2 = distSp1Sp2;
         return distStartStop1*priceKm1+distSp1Sp2*priceKm2;
     }
 

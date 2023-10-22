@@ -58,7 +58,7 @@ public class Main2 {
         System.out.println("IntialState type (Greedy, Mixed, Basic)");
 
         Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
-        BicingBoard2 InitialState= new BicingBoard2(est, 5, "Basic" );
+        BicingBoard2 InitialState= new BicingBoard2(est, 5, "Mixed" );
         InitialState.print();
 
         //Hill1
@@ -73,7 +73,7 @@ public class Main2 {
         Object o = s.getGoalState();
         BicingBoard2 finalState = (BicingBoard2) o;
         System.out.println("Heuristico total: " + -1*new BicingHeuristic3().getHeuristicValue(o));
-        System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
+        System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit() + " Distance: " + finalState.getDist1()+finalState.getDist2());
         System.out.println(" RealProfit: " + finalState.getRealProfit());
         finalState.print();
 
@@ -89,7 +89,7 @@ public class Main2 {
         Object o1 = s1.getGoalState();
         BicingBoard2 finalState1 = (BicingBoard2) o1;
         System.out.println("Heuristico total: " + -1*new BicingHeuristic4().getHeuristicValue(o1));
-        System.out.print("Waste: " + finalState1.getTotalWaste() + " ProfitBic: " + finalState1.getProfit());
+        System.out.print("Waste: " + finalState1.getTotalWaste() + " ProfitBic: " + finalState1.getProfit()+ " Distance: " + finalState1.getDist1()+finalState1.getDist2());
         System.out.println(" RealProfit: " + finalState1.getRealProfit());
         finalState1.print();
         //printAllStations(est, finalState);

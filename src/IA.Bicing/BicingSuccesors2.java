@@ -97,6 +97,30 @@ public class BicingSuccesors2 implements SuccessorFunction {
             }
         }
 
+        for (int i =0; i < board.getVans(); ++i) {
+            for (int j =0; j <= board.getTbic(i); ++j) {
+                if (board.canPickUp(i, j)) {
+                    BicingBoard2 newBoard = new BicingBoard2(board);
+                    newBoard.operatorPickUp(i,j);
+                    String S=new String("pick_up("+i+","+j+")");
+                    S = S + newBoard.getTotalWaste();
+                    retVal.add(new Successor(S,newBoard));
+                }
+            }
+        }
+
+        for (int i =0; i < board.getVans(); ++i) {
+            for (int j = 0; j < board.getTbic(i); ++j) {
+                if (board.canDrop(i, j)) {
+                    BicingBoard2 newBoard = new BicingBoard2(board);
+                    newBoard.operatorDrop(i,j);
+                    String S=new String("drop("+i+","+j+")");
+                    S = S + newBoard.getTotalWaste();
+                    retVal.add(new Successor(S,newBoard));
+                }
+            }
+        }
+
         return retVal;
     }
 }

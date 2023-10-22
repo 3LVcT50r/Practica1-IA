@@ -304,4 +304,27 @@ public class BicingBoard2 {
         }
         else if (state[vn][STOP2] == -1) state[vn][STOP2] = st;
     }
+
+    public void operatorPickUp(int vn, int ntbic) {
+        state[vn][TBIC] = ntbic;
+        state[vn][BIC1] = ntbic;
+    }
+    public boolean canPickUp(int vn, int ntbic) {
+        return (vanBound(vn) && state[vn][START] != -1 && ntbic <= est.get(state[vn][START]).getNumBicicletasNoUsadas() && ntbic >= 0 && ntbic <= 30);
+    }
+
+    //Modify Drop Bicycles
+    //pre: vn exists and 0 < TBIC <= bicnotused in vn | 0 < BIC1 < TBIC
+    //post: BIC1 = nbic1 | 0 < nbic1 < TBIC
+    public void operatorDrop(int vn, int nbic1) {
+        int tbic = est.get(state[vn][START]).getNumBicicletasNoUsadas();
+        state[vn][BIC1] = nbic1;
+        if (tbic == nbic1)
+            state[vn][STOP2] = -1;
+    }
+    public boolean canDrop(int vn, int nbic1) {
+        return (vanBound(vn) && state[vn][START] != -1 && nbic1 <= state[vn][TBIC] &&
+                nbic1 >= 0 );
+    }
+
 }

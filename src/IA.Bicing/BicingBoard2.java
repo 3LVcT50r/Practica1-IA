@@ -21,7 +21,26 @@ public class BicingBoard2 {
         this.est = est;
 
         if (type.equals("Greedy")) {
-            //POR MI NO LO HACEMOS: VICTOR
+
+            int dem, bicNext, bicNow, afterDem, valor = 0, valor2, valorMax, estMax;
+            for (int i = 0; i < est.size(); ++i) {
+                dem = est.get(i).getDemanda();
+                bicNext = est.get(i).getNumBicicletasNext();
+                bicNow = est.get(i).getNumBicicletasNoUsadas();
+                afterDem = bicNext - dem;
+                valor2 = Math.min(afterDem, bicNow);
+                if (i == 0) valor = valor2;
+                if (valor2 >= valor) {
+                    valorMax = valor2;
+                    estMax = i;
+                }
+            }
+
+
+
+
+
+
         }
         else if (type.equals("Mixed")) {
             // Not greedy not basic, a middle approach

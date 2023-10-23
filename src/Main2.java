@@ -58,7 +58,7 @@ public class Main2 {
         System.out.println("IntialState type (Greedy, Mixed, Basic)");
 
         Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
-        BicingBoard2 InitialState= new BicingBoard2(est, 5, "Mixed" );
+        BicingBoard2 InitialState= new BicingBoard2(est, 5, "Greedy" );
         InitialState.print();
 
         //Hill1

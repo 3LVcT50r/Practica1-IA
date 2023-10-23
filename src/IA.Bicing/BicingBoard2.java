@@ -2,6 +2,8 @@ package IA.Bicing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class BicingBoard2 {
     private static final int START=0;
@@ -17,64 +19,7 @@ public class BicingBoard2 {
     private int dist1;
     private int dist2;
 
-    class QuickSort {
-        /* This function takes last element as pivot,
-           places the pivot element at its correct
-           position in sorted array, and places all
-           smaller (smaller than pivot) to left of
-           pivot and all greater elements to right
-           of pivot */
-        int partition(int arr[], int low, int high) {
-            int pivot = arr[high];
-            int i = (low - 1); // index of smaller element
-            for (int j = low; j < high; j++) {
-                // If current element is smaller than or
-                // equal to pivot
-                if (arr[j] <= pivot) {
-                    i++;
 
-                    // swap arr[i] and arr[j]
-                    int temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-
-            // swap arr[i+1] and arr[high] (or pivot)
-            int temp = arr[i + 1];
-            arr[i + 1] = arr[high];
-            arr[high] = temp;
-
-            return i + 1;
-        }
-
-
-        /* The main function that implements QuickSort()
-          arr[] --> Array to be sorted,
-          low  --> Starting index,
-          high  --> Ending index */
-        void sort(int arr[], int low, int high) {
-            if (low < high) {
-            /* pi is partitioning index, arr[pi] is
-              now at right place */
-                int pi = partition(arr, low, high);
-
-                // Recursively sort elements before
-                // partition and after partition
-                sort(arr, low, pi - 1);
-                sort(arr, pi + 1, high);
-            }
-        }
-
-        /* A utility function to print array of size n */
-         void printArray(int arr[]) {
-            int n = arr.length;
-            for (int i = 0; i < n; ++i)
-                System.out.print(arr[i] + " ");
-            System.out.println();
-        }
-
-    }
         public BicingBoard2(Estaciones est, int van, String type) {
         state = new int[van][5];
         this.van = van;
@@ -84,26 +29,68 @@ public class BicingBoard2 {
         if (type.equals("Greedy")) {
 
             int dem, bicNext, bicNow, afterDem, valor = 0, n = est.size();
-            int lista[] = new int [n];
+            int lista[][] = new int [n][2];
             for (int i = 0; i < n; ++i) {
                 dem = est.get(i).getDemanda();
                 bicNext = est.get(i).getNumBicicletasNext();
                 bicNow = est.get(i).getNumBicicletasNoUsadas();
                 afterDem = bicNext - dem;
                 valor = Math.min(afterDem, bicNow);
-               lista[i] = valor;
+               lista[i][0] = valor;
+               lista[i][1]=i;
 
-                /*if (i == 0) valor = valor2;
-                if (valor2 >= valor) {
-                    valorMax = valor2;
-                    estMax = i;
-                }*/
             }
 
-            QuickSort ob = new QuickSort();
-            ob.sort(lista, 0, n-1);
-            ob.printArray(lista);
-            //state[i][START] = valorMax;
+            for (int i = 0; i < n; ++i) {
+                System.out.print(lista[i][0] + " " +  lista[i][1]+ " ");
+            }
+            System.out.println();
+
+
+            Arrays.sort(lista, new Comparator<int[]>() {
+                @Override
+                public int compare(int[] a, int[] b) {
+                    return Integer.compare(a[0], b[0]);
+                }
+            });
+
+            for (int i = 0; i < n; ++i) {
+                System.out.print(lista[i][0] + " " +  lista[i][1]+ " ");
+            }
+            System.out.println();
+
+            int profit[][] = new int [n][2];
+
+            for (int i=0; i < n; ++i){
+                for(int j = 0; j < 2;++j) {
+                    profit[i][j] = lista[i][j];
+                }
+            }
+
+            for(int i = 0; i < van; ++i) {
+                state[i][START] = lista[n-1-i][1];
+                state[i][TBIC] = lista[n-1-i][0];
+                int startX = est.get(state[i][START]).getCoordX();
+                int startY = est.get(state[i][START]).getCoordY();
+
+                for (int j = 0; j < n; ++j) {
+                    int startX2 = est.get(j).getCoordX();
+                    int startY2 = est.get(j).getCoordY();
+                    int dist = Math.abs(startX-startX2) + Math.abs(startY-startY2);
+                    dist = dist * (state[i][TBIC]+9)/10;
+                    profit[j][0] = profit[j][0] + dist;
+                }
+                Arrays.sort(profit, new Comparator<int[]>() {
+                    @Override
+                    public int compare(int[] a, int[] b) {
+                        return Integer.compare(a[0], b[0]);
+                    }
+                });
+                state[i][STOP1] = profit[i][1];
+                state[i][BIC1] = Math.min(-profit[i][0], state[i][TBIC]);
+            }
+
+
 
 
 

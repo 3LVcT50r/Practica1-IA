@@ -28,6 +28,12 @@ public class BicingBoard2 {
 
         if (type.equals("Greedy")) {
 
+            for (int i = 0; i < van; ++i) {
+                for (int j = 0; j < 3; ++j) {
+                    state[i][START + j] = -1;
+                }
+            }
+
             int dem, bicNext, bicNow, afterDem, valor = 0, n = est.size();
             int lista[][] = new int [n][2];
             for (int i = 0; i < n; ++i) {
@@ -41,10 +47,7 @@ public class BicingBoard2 {
 
             }
 
-            for (int i = 0; i < n; ++i) {
-                System.out.print(lista[i][0] + " " +  lista[i][1]+ " ");
-            }
-            System.out.println();
+
 
 
             Arrays.sort(lista, new Comparator<int[]>() {
@@ -59,15 +62,24 @@ public class BicingBoard2 {
             }
             System.out.println();
 
-            int profit[][] = new int [n][2];
 
-            for (int i=0; i < n; ++i){
-                for(int j = 0; j < 2;++j) {
-                    profit[i][j] = lista[i][j];
-                }
-            }
 
             for(int i = 0; i < van; ++i) {
+
+                int profit[][] = new int [n][3];
+
+                for (int z=0; z < n; ++z){
+                        profit[z][0] = lista[z][0];
+                        profit[z][1] = lista[z][1];
+                        profit[z][2] = lista[z][0];
+
+                }
+
+                for (int y = 0; y < n; ++y) {
+                    System.out.print(profit[y][0] + " " + profit[y][1] + " ");
+                }
+                System.out.println();
+
                 state[i][START] = lista[n-1-i][1];
                 state[i][TBIC] = lista[n-1-i][0];
                 int startX = est.get(state[i][START]).getCoordX();
@@ -77,17 +89,39 @@ public class BicingBoard2 {
                     int startX2 = est.get(j).getCoordX();
                     int startY2 = est.get(j).getCoordY();
                     int dist = Math.abs(startX-startX2) + Math.abs(startY-startY2);
+                    dist = dist/1000;
                     dist = dist * (state[i][TBIC]+9)/10;
+
+
+
                     profit[j][0] = profit[j][0] + dist;
+
+
+
+
                 }
+
                 Arrays.sort(profit, new Comparator<int[]>() {
                     @Override
                     public int compare(int[] a, int[] b) {
                         return Integer.compare(a[0], b[0]);
                     }
                 });
+
+              /*  for (int k = 0; k < n; ++k) {
+                    System.out.print(lista[k][0] + " " +  lista[k][1]+ " ");
+                }*/
+                for (int y = 0; y < n; ++y) {
+                    System.out.print(profit[y][0] + " " + profit[y][1] + " ");
+                }
+                System.out.println();
+
                 state[i][STOP1] = profit[i][1];
-                state[i][BIC1] = Math.min(-profit[i][0], state[i][TBIC]);
+                state[i][BIC1] = Math.min(-profit[i][2], state[i][TBIC]);
+                for (int y = 0; y < n; ++y) {
+                    System.out.print(lista[y][0] + " " + lista[y][1] + " ");
+                }
+                System.out.println();
             }
 
 

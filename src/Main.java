@@ -54,7 +54,7 @@ public class Main {
         System.out.println("IntialState type (Greedy, Mixed, Basic)");
 
         Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
-        BicingBoard InitialState= new BicingBoard(est, 5, "Mixed" );
+        BicingBoard InitialState= new BicingBoard(est, 5, "Greedy" );
         InitialState.print();
 
         while (sc.hasNext()) {
@@ -73,10 +73,6 @@ public class Main {
                 int st1 = sc.nextInt();
                 int st2 = sc.nextInt();
                 InitialState.operatorAddStation(st1,st2);
-            }
-            else if (input.equals("delete_stop")) {
-                int vn = sc.nextInt();
-                InitialState.operatorDeleteStop(vn);
             }
             else if (input.equals("pick_up")) {
                 int vn = sc.nextInt();

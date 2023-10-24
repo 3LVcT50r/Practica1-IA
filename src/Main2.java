@@ -1,12 +1,4 @@
-import IA.Bicing.BicingBoard2;
-import IA.Bicing.BicingSuccesors2;
-import IA.Bicing.BicingTest;
-import IA.Bicing.BicingHeuristic3;
-import IA.Bicing.BicingHeuristic4;
-
-import IA.Bicing.Estacion;
-import IA.Bicing.Estaciones;
-import IA.Bicing.TestBicing;
+import IA.Bicing.*;
 
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
@@ -48,21 +40,8 @@ public class Main2 {
             System.out.println(key + " : " + property);
         }
     }
-    public static void main(String[] args) throws Exception {
-        String input;
-        Scanner sc = new Scanner(System.in);
 
-        Random ran = new Random();
-        int x = ran.nextInt(100);
-
-        System.out.println("IntialState type (Greedy, Mixed, Basic)");
-
-        Estaciones est = new Estaciones(25, 1250, Estaciones.EQUILIBRIUM, 1234);
-        BicingBoard2 InitialState= new BicingBoard2(est, 5, "Greedy" );
-        InitialState.print();
-
-        //Hill1
-        Problem p = new Problem(InitialState, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic3());
+    public static Object hill(Problem p) throws Exception {
         Search s = new HillClimbingSearch();
         SearchAgent agent = new SearchAgent(p, s);
 
@@ -70,97 +49,46 @@ public class Main2 {
         printActions(agent.getActions());
         printInstrumentation(agent.getInstrumentation());
 
-        Object o = s.getGoalState();
-        BicingBoard2 finalState = (BicingBoard2) o;
-        System.out.println("Heuristico total: " + -1*new BicingHeuristic3().getHeuristicValue(o));
-        System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit() + " Distance: " + finalState.getDist1()+finalState.getDist2());
-        System.out.println(" RealProfit: " + finalState.getRealProfit());
+        return s.getGoalState();
+    }
+
+
+    public static void main(String[] args) throws Exception {
+        Random ran = new Random();
+        int x = ran.nextInt(100);
+
+        Estaciones est = new Estaciones(50, 2500, Estaciones.EQUILIBRIUM, 1234);
+        BicingBoard InitialState = new BicingBoard(est, 10, "Basic" );
+        BicingBoard2 InitialState2 = new BicingBoard2(est, 10, "Basic" );
+        InitialState.print();
+        Problem p;
+
+        /*//Tipo: Hill; Heuristico: Maximización de lo que obtenemos por los traslados de las bicicletas + ponderacion;
+        //Operadores: "Simples" (Set1)
+        System.out.println("Heuristico 1 ///////////////////////////////////////");
+        p = new Problem(InitialState, new BicingSuccesors(), new BicingTest(), new BicingHeuristic());
+        BicingBoard finalState = (BicingBoard) hill(p);
         finalState.print();
 
-        //Hill2
-        Problem p1 = new Problem(InitialState, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic4());
-        Search s1 = new HillClimbingSearch();
-        SearchAgent agent1 = new SearchAgent(p1, s1);
+        //Tipo: Hill; Ganancia total + ponderacion; Operadores: "Simples" (Set1)
+        System.out.println("Heuristico 2 ///////////////////////////////////////");
+        p = new Problem(InitialState, new BicingSuccesors(), new BicingTest(), new BicingHeuristic2());
+        finalState = (BicingBoard) hill(p);
+        finalState.print();
+        */
+        //Tipo: Hill; Heuristico: Maximización de lo que obtenemos por los traslados de las bicicletas;
+        //Operadores: "Complejos" (Set2)
+        System.out.println("Heuristico 3 ///////////////////////////////////////");
+        p = new Problem(InitialState2, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic3());
+        BicingBoard2 finalState2 = (BicingBoard2) hill(p);
+        finalState2.print();
 
-        System.out.println(agent1.getActions().size());
-        printActions(agent1.getActions());
-        printInstrumentation(agent1.getInstrumentation());
+        //Tipo: Hill; Ganancia total; Operadores: "Complejos" (Set2)
+        System.out.println("Heuristico 4 ///////////////////////////////////////");
+        p = new Problem(InitialState2, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic4());
+       finalState2 = (BicingBoard2) hill(p);
+        finalState2.print();
 
-        Object o1 = s1.getGoalState();
-        BicingBoard2 finalState1 = (BicingBoard2) o1;
-        System.out.println("Heuristico total: " + -1*new BicingHeuristic4().getHeuristicValue(o1));
-        System.out.print("Waste: " + finalState1.getTotalWaste() + " ProfitBic: " + finalState1.getProfit()+ " Distance: " + finalState1.getDist1()+finalState1.getDist2());
-        System.out.println(" RealProfit: " + finalState1.getRealProfit());
-        finalState1.print();
         //printAllStations(est, finalState);
-
-        while (sc.hasNext()) {
-            input = sc.next();
-            if (input.equals("print_state")) {
-                InitialState.print();
-            }
-            else if (input.equals("print_station")) {
-                int station = sc.nextInt();
-                printStation(est, InitialState, station);
-            }
-            else if (input.equals("print_all_station")) {
-                printAllStations(est, InitialState);
-            }
-            else if (input.equals("successors+")) {
-                List<Successor> a = new BicingSuccesors2().getSuccessors(InitialState);
-                double best = -1000;
-                int bestState = 0;
-                for (int i = 0; i < a.size(); ++i) {
-                    BicingBoard2 newState = (BicingBoard2) a.get(i).getState();
-                    double value = new BicingHeuristic3().getHeuristicValue(newState);
-                    if (best < value) {
-                        best = value;
-                        bestState = i;
-                    }
-                    System.out.println("Est: " + i + " Profit: " + value);
-                }
-                System.out.println("BestState: " + bestState + " Profit: " + best);
-            }
-            else if (input.equals("successors")) {
-                List<Successor> a = new BicingSuccesors2().getSuccessors(InitialState);
-                System.out.println(a.size());
-            }
-            /*
-            else if (input.equals("hill")) {
-                Problem p = new Problem(InitialState, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic3());
-                Search s = new HillClimbingSearch();
-                SearchAgent agent = new SearchAgent(p, s);
-
-                System.out.println(agent.getActions().size());
-                printActions(agent.getActions());
-                printInstrumentation(agent.getInstrumentation());
-
-                Object o = s.getGoalState();
-                BicingBoard2 finalState = (BicingBoard2) o;
-                System.out.println("Heuristico total: " + -1*new BicingHeuristic3().getHeuristicValue(o));
-                System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
-                System.out.println(" RealProfit: " + finalState.getRealProfit());
-                finalState.print();
-                //printAllStations(est, finalState);
-            }
-            else if (input.equals("hill2")) {
-                Problem p = new Problem(InitialState, new BicingSuccesors2(), new BicingTest(), new BicingHeuristic4());
-                Search s = new HillClimbingSearch();
-                SearchAgent agent = new SearchAgent(p, s);
-
-                System.out.println(agent.getActions().size());
-                printActions(agent.getActions());
-                printInstrumentation(agent.getInstrumentation());
-
-                Object o = s.getGoalState();
-                BicingBoard2 finalState = (BicingBoard2) o;
-                System.out.println("Heuristico total: " + -1*new BicingHeuristic4().getHeuristicValue(o));
-                System.out.print("Waste: " + finalState.getTotalWaste() + " ProfitBic: " + finalState.getProfit());
-                System.out.println(" RealProfit: " + finalState.getRealProfit());
-                finalState.print();
-                //printAllStations(est, finalState);
-            }
-            */
-        }
     }
 }

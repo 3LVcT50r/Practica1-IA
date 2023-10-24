@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class BicingBoard  {
+public class BicingBoard2 {
+
+// ****************************************
+// Initialization
+// ****************************************
     private static final int START=0;
     private static final int STOP1=1;
     private static final int STOP2=2;
@@ -23,7 +27,7 @@ public class BicingBoard  {
 // Constructor
 // ****************************************
 
-    public BicingBoard(Estaciones est, int van, String type) {
+        public BicingBoard2(Estaciones est, int van, String type) {
         state = new int[van][5];
         this.van = van;
         this.stations = est.size();
@@ -46,8 +50,8 @@ public class BicingBoard  {
                 bicNow = est.get(i).getNumBicicletasNoUsadas();
                 afterDem = bicNext - dem;
                 valor = Math.min(afterDem, bicNow);
-                lista[i][0] = valor;
-                lista[i][1]=i;
+               lista[i][0] = valor;
+               lista[i][1]=i;
 
             }
             Arrays.sort(lista, new Comparator<int[]>() {
@@ -106,7 +110,7 @@ public class BicingBoard  {
         }
     }
 
-    public BicingBoard(BicingBoard board) {
+    public BicingBoard2(BicingBoard2 board) {
         //2d array copy
         state = new int[board.state.length][board.state[0].length];
         for (int i=0; i < board.state.length; ++i)
@@ -127,7 +131,7 @@ public class BicingBoard  {
             System.out.println();
         }
         System.out.print(" Waste: "+getTotalWaste()+" Profit: " + getProfit()+" Total Profit: ");
-        System.out.println(getRealProfit());
+        System.out.println(getRealProfit() + " Distance: " + getDist1()+getDist2());
     }
 
     public int bicDropped(int station) {
@@ -242,7 +246,6 @@ public class BicingBoard  {
         }
         return points;
     }
-
     public int bonuStop() {
         int points=0;
         for (int i=0; i < van; ++i) {
@@ -308,47 +311,89 @@ public class BicingBoard  {
                 state[v1][STOP1+sp1] != -1 && state[v2][STOP1+sp2] != -1);
     }
 
-    //Add start
-    //pre: vn and st exists
-    //post: vn starts in st
-    public void operatorAddStation(int vn, int st) {
-        state[vn][START] = st;
+    public void operatorChangeStop(int vn, int sp, int sp2, int nbicis) {
+        state[vn][STOP1] = sp;
+        state[vn][STOP2] = sp2;
+        state[vn][BIC1] = nbicis;
+    }
+    public boolean canChangeStop(int vn, int sp, int sp2, int nbicis) {
+        return (vanBound(vn) && stationBound(sp) &&
+                state[vn][START] != -1 &&
+                sp != sp2 &&
+                sp != state[vn][START] &&
+                sp2 != state[vn][START] &&
+                state[vn][TBIC] >= nbicis);
+    }
+    public void operatorChangeStop1(int vn, int sp, int nbicis) {
+        state[vn][STOP1] = sp;
+        state[vn][BIC1] = nbicis;
+    }
+    public boolean canChangeStop1(int vn, int sp, int nbicis) {
+        return (vanBound(vn) && stationBound(sp) &&
+                state[vn][STOP1] != -1 &&
+                sp != state[vn][START] &&
+                state[vn][TBIC] >= nbicis);
+    }
+    public void operatorChangeStop2(int vn, int sp, int nbicis) {
+        state[vn][STOP2] = sp;
+        state[vn][BIC1] = nbicis;
+    }
+    public boolean canChangeStop2(int vn, int sp, int nbicis) {
+        return (vanBound(vn) && stationBound(sp) &&
+                state[vn][STOP2] != -1 &&
+                sp != state[vn][START] &&
+                state[vn][TBIC] >= nbicis);
     }
 
-    public boolean canAddStation(int vn, int st) {
+    public void operatorAddStation(int vn, int st, int npick, int stp) {
+        state[vn][START] = st;
+        state[vn][TBIC] = npick;
+        state[vn][STOP1] = stp;
+        state[vn][BIC1] = npick/2;
+    }
+    public boolean canAddStation(int vn, int st, int ntbic, int stp) {
         for (int i=0; i < van; ++i) {
             if (state[i][START] == st)
                 return false;
         }
-        return (vanBound(vn) && stationBound(st) && state[vn][START] == -1);
+
+        return vanBound(vn) && stationBound(st) && state[vn][START] == -1 &&
+                ntbic <= est.get(st).getNumBicicletasNoUsadas() &&
+                ntbic >= 0 && ntbic <= 30 && state[vn][STOP1] == -1 && state[vn][START] != stp;
     }
 
-    //Add stop
-    //pre: vn and sp exists
-    //post: vn stops in sp
-    public void operatorAddStop(int vn, int st) {
-        if (state[vn][STOP1] == -1) state[vn][STOP1] = st;
+    public boolean canAddStop(int vn, int st, int ntbic) {
+        boolean cond = false;
+        if (state[vn][START] == -1) return false;
+
+        if (state[vn][STOP1] == -1) {
+            cond = true;
+        }
+        else if (state[vn][STOP2] == -1) {
+            cond = state[vn][STOP1] != -1 && state[vn][START] != -1 && ntbic <= est.get(state[vn][START]).getNumBicicletasNoUsadas();
+        }
+        return cond && vanBound(vn) && stationBound(st) && state[vn][START] != st &&
+                ntbic >= 0 && ntbic <= 30;
+    }
+    public void operatorAddStop(int vn, int st, int ntbic) {
+        if (state[vn][STOP1] == -1) {
+            state[vn][STOP1] = st;
+            state[vn][BIC1] = ntbic;
+        }
         else if (state[vn][STOP2] == -1) state[vn][STOP2] = st;
     }
-
-    public boolean canAddStop(int vn, int st) {
-        boolean cond = (vanBound(vn) && stationBound(st) &&
-                state[vn][START] != st && state[vn][START] != -1 &&
-                (state[vn][STOP1] == -1 || state[vn][STOP2] == -1));
-        if (state[vn][STOP1] == st) return false;
-        return cond;
+    public void operatorAddStop2(int vn, int st, int nbic) {
+        state[vn][STOP2] = st;
+        state[vn][BIC1] -= nbic;
+    }
+    public boolean canAddStop2(int vn, int st, int nbic) {
+        return vanBound(vn) && stationBound(st) && state[vn][STOP1] != -1 &&
+                nbic <= state[vn][TBIC];
     }
 
-    //Modify PickUp Bicycles
-    //pre: vn exists and  0 < TBIC <= bicnotused in vn
-    //post: TBIC = ntbic | 0 < ntbic <= bicnotused in vn
     public void operatorPickUp(int vn, int ntbic) {
         state[vn][TBIC] = ntbic;
         state[vn][BIC1] = ntbic;
-        /*if (ntbic == 0) {
-            operatorDeleteStop(vn, state[vn][STOP2]);
-            operatorDeleteStop(vn, state[vn][STOP1]);
-        }*/
     }
     public boolean canPickUp(int vn, int ntbic) {
         return (vanBound(vn) && state[vn][START] != -1 && ntbic <= est.get(state[vn][START]).getNumBicicletasNoUsadas() && ntbic >= 0 && ntbic <= 30);
@@ -367,22 +412,12 @@ public class BicingBoard  {
         return (vanBound(vn) && state[vn][START] != -1 && nbic1 <= state[vn][TBIC] &&
                 nbic1 >= 0 );
     }
-
-    // pre:
-    // post:
-
-    public void operatorChangeStop1(int vn, int sp) {
-        state[vn][STOP1] = sp;
+    public void operatorSwitchBicis (int vn, int nbicis) {
+        state[vn][BIC1] = state[vn][TBIC]- nbicis;
     }
-    public void operatorChangeStop2(int vn, int sp) {
-        state[vn][STOP2] = sp;
-    }
-    public boolean canChangeStop1(int vn, int sp) {
-        return (vanBound(vn) && state[vn][STOP1] != -1 &&  state[vn][STOP1] != sp);
-    }
-    public boolean canChangeStop2(int vn, int sp) {
-        return vanBound(vn) && state[vn][STOP1] != -1 && state[vn][STOP2] != sp &&
-                state[vn][STOP2] != -1 && state[vn][STOP1] != state[vn][STOP2];
+    public boolean canSwitchBicis(int vn, int nbicis) {
+        return vanBound(vn) && nbicis >= -state[vn][TBIC]+1 && nbicis <= state[vn][TBIC] &&
+                state[vn][STOP1] != -1 && state[vn][STOP2] != -1;
     }
 
 

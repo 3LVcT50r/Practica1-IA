@@ -41,6 +41,18 @@ public class BicingSuccesors implements SuccessorFunction {
         }
 
         for (int i =0; i < board.getVans(); ++i) {
+            for (int j = 2; j > 0; --j) {
+                if (board.canDeleteStop(i)) {
+                    BicingBoard newBoard = new BicingBoard(board);
+                    newBoard.operatorDeleteStop(i);
+                    String S=new String("delete_stop("+i+","+j+")");
+                    //S = S + newBoard.getTotalWaste();
+                    retVal.add(new Successor(S,newBoard));
+                }
+            }
+        }
+
+        for (int i =0; i < board.getVans(); ++i) {
             for (int j = 0; j < board.getStations(); ++j) {
                 if (board.canAddStation(i, j)) {
                     BicingBoard newBoard = new BicingBoard(board);

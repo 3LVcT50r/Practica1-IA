@@ -308,6 +308,26 @@ public class BicingBoard  {
                 state[v1][STOP1+sp1] != -1 && state[v2][STOP1+sp2] != -1);
     }
 
+    //Delete stop sp from van vn
+    //pre: vn exists, and stops in sp
+    //post: if vn has two stops and delete stop1, stop1 = stop2 and stop2 = -1 and b1=bt
+    //else stop1=-1 and b1=0;
+    public void operatorDeleteStop(int vn) {
+        if (state[vn][STOP2] != -1) {
+            state[vn][STOP2] = -1;
+            state[vn][BIC1] = state[vn][TBIC];
+        }
+        else if (state[vn][STOP1] != -1) {
+            state[vn][STOP1] = -1;
+            state[vn][TBIC] = 0;
+            state[vn][BIC1] = 0;
+        }
+    }
+
+    public boolean canDeleteStop(int vn) {
+        return (vanBound(vn) && (state[vn][STOP2] != -1 || state[vn][STOP1] != -1 ) );
+    }
+
     //Add start
     //pre: vn and st exists
     //post: vn starts in st

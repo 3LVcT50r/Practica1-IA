@@ -1,0 +1,1933 @@
+Seed: 81
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+25
+add_station(0,17)
+add_stop(0,16)
+pick_up(0,14)
+add_station(1,20)
+add_station(2,2)
+add_station(3,15)
+add_stop(0,1)
+add_stop(1,1)
+pick_up(1,15)
+add_station(4,12)
+add_stop(1,0)
+add_stop(2,0)
+pick_up(2,18)
+add_stop(2,16)
+add_stop(3,16)
+pick_up(3,9)
+change_stop1(0,21)
+add_stop(4,16)
+pick_up(4,15)
+change_stop1(4,5)
+add_stop(4,16)
+change_stop2(1,16)
+add_stop(3,8)
+drop(3,0)
+change_stop2(0,16)
+nodesExpanded : 26
+Profit: 71
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,2,22,0)
+add_stop(0,1,0)
+add_station(1,12,14,0)
+add_stop(1,1,0)
+add_station(2,17,14,3)
+add_stop(2,5,0)
+add_station(3,20,14,5)
+add_stop(3,8,0)
+add_station(4,22,12,8)
+add_stop(4,16,0)
+nodesExpanded : 11
+Profit: 76
+Profit: -12
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+17
+change_stop2(3,16)
+change_stop2(1,7)
+change_stop2(4,10)
+change_stop1(1,1)
+change_stop1(4,0)
+pick_up(4,7)
+add_stop(0,16)
+add_stop(2,16)
+pick_up(3,10)
+change_stop2(4,16)
+add_stop(0,21)
+add_stop(2,21)
+change_stop2(0,16)
+change_stop2(2,16)
+change_stop2(1,21)
+pick_up(3,0)
+change_stop1(3,16)
+nodesExpanded : 18
+Profit: 30
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+add_stop(0,16,30)
+add_stop(2,7,26)
+change_stops(1,1,10,21,)
+add_stop2(3,0)
+add_stop2(4,3)
+nodesExpanded : 6
+Profit: 86
+Profit: 80
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,8)
+add_stop(1,8)
+add_stop(2,8)
+add_stop(3,8)
+add_stop(4,8)
+nodesExpanded : 6
+Profit: 80
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 80
+Seed: 2
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+24
+add_station(0,7)
+add_stop(0,9)
+pick_up(0,29)
+add_stop(0,15)
+add_station(1,10)
+add_stop(1,15)
+pick_up(1,19)
+add_stop(1,3)
+add_station(2,0)
+add_stop(2,3)
+pick_up(2,22)
+add_stop(2,13)
+drop(2,0)
+add_station(3,1)
+add_stop(3,3)
+pick_up(3,11)
+add_stop(3,5)
+drop(3,0)
+add_station(4,6)
+add_stop(4,3)
+pick_up(4,12)
+swap(0,4,1,0)
+add_stop(4,3)
+change_stop1(4,11)
+nodesExpanded : 25
+Profit: 93
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,7,28,3)
+add_stop(0,5,0)
+add_station(1,0,22,2)
+add_stop(1,3,0)
+add_station(2,10,18,9)
+pick_up(2,19)
+add_station(3,4,12,8)
+add_stop(3,9,0)
+add_station(4,6,12,9)
+add_stop(4,11,0)
+nodesExpanded : 11
+Profit: 93
+Profit: 18
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+13
+change_stop1(0,0)
+change_stop2(4,15)
+change_stop1(3,3)
+swap(0,4,0,1)
+drop(4,14)
+change_stop1(2,13)
+swap(2,4,0,1)
+add_stop(1,9)
+add_stop(1,13)
+add_stop(2,9)
+drop(3,27)
+change_stop2(1,9)
+change_stop2(0,5)
+nodesExpanded : 14
+Profit: 70
+Set Complejo Heuristico Base ///////////////////////////////////////
+21
+change_stops(4,0,3,1,)
+add_stop(1,15,30)
+add_stop2(0,13)
+switch(3,22)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,2)
+add_stop2(2,5)
+add_stop2(2,5)
+add_stop2(2,5)
+add_stop2(2,5)
+add_stop2(2,5)
+nodesExpanded : 22
+Profit: 118
+Profit: 95
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,11)
+add_stop(1,11)
+add_stop(2,11)
+add_stop(3,11)
+add_stop(4,11)
+nodesExpanded : 6
+Profit: 95
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 95
+Seed: 12
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+25
+add_station(0,10)
+add_stop(0,18)
+pick_up(0,23)
+add_stop(0,11)
+add_station(1,24)
+add_stop(1,11)
+pick_up(1,23)
+add_station(2,14)
+add_stop(1,15)
+add_stop(2,15)
+pick_up(2,27)
+add_stop(2,19)
+drop(2,3)
+add_station(3,8)
+add_stop(3,15)
+pick_up(3,17)
+change_stop1(3,2)
+add_stop(3,15)
+add_station(4,23)
+add_stop(4,15)
+pick_up(4,3)
+add_stop(4,21)
+change_stop2(0,15)
+drop(4,0)
+change_stop1(2,1)
+nodesExpanded : 26
+Profit: 93
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,14,26,1)
+add_stop(0,2,0)
+add_station(1,10,22,5)
+add_stop(1,6,0)
+add_station(2,24,22,11)
+pick_up(2,23)
+add_station(3,8,16,11)
+add_stop(3,15,0)
+add_station(4,7,10,2)
+add_stop(4,15,0)
+nodesExpanded : 11
+Profit: 97
+Profit: -42
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+15
+pick_up(4,3)
+change_stop1(1,18)
+pick_up(2,0)
+pick_up(1,7)
+pick_up(0,6)
+change_stop1(3,18)
+change_stop2(4,11)
+change_stop2(2,11)
+change_stop1(2,11)
+change_stop1(4,15)
+pick_up(4,9)
+change_stop2(1,11)
+change_stop2(0,11)
+change_stop1(0,19)
+pick_up(3,2)
+nodesExpanded : 16
+Profit: 24
+Set Complejo Heuristico Base ///////////////////////////////////////
+24
+add_stop2(4,3)
+change_stops(1,6,12,17,)
+add_stop2(2,11)
+add_stop2(0,0)
+add_stop2(2,11)
+add_stop2(3,1)
+add_stop2(3,1)
+add_stop2(3,1)
+add_stop2(3,1)
+add_stop2(3,2)
+add_stop2(3,2)
+add_stop2(3,2)
+add_stop2(3,2)
+add_stop2(3,2)
+add_stop2(3,15)
+add_stop2(3,15)
+add_stop2(3,15)
+add_stop2(3,15)
+add_stop2(3,18)
+add_stop2(3,18)
+add_stop2(3,18)
+add_stop2(3,18)
+add_stop2(3,18)
+add_stop2(3,18)
+nodesExpanded : 25
+Profit: 70
+Profit: 101
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,21)
+add_stop(1,21)
+add_stop(2,21)
+add_stop(3,21)
+add_stop(4,21)
+nodesExpanded : 6
+Profit: 101
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 101
+Seed: 40
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+24
+add_station(0,12)
+add_stop(0,0)
+pick_up(0,21)
+add_stop(0,3)
+add_station(1,14)
+add_stop(1,3)
+pick_up(1,17)
+add_stop(1,13)
+drop(1,0)
+add_station(2,1)
+add_stop(2,3)
+pick_up(2,9)
+add_stop(2,20)
+drop(2,0)
+add_station(3,16)
+add_stop(3,3)
+pick_up(3,2)
+add_stop(3,24)
+add_station(4,7)
+add_stop(4,3)
+pick_up(4,8)
+swap(3,4,1,0)
+add_stop(4,3)
+change_stop1(3,2)
+nodesExpanded : 25
+Profit: 57
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,12,20,0)
+pick_up(0,21)
+add_station(1,14,16,2)
+pick_up(1,17)
+add_station(2,1,8,0)
+add_stop(2,3,0)
+add_station(3,7,8,3)
+add_stop(3,4,0)
+add_station(4,17,8,3)
+add_stop(4,4,0)
+nodesExpanded : 11
+Profit: 62
+Profit: -25
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+20
+pick_up(2,0)
+change_stop1(4,0)
+pick_up(4,4)
+change_stop2(3,2)
+change_stop2(2,0)
+add_stop(0,3)
+add_stop(0,13)
+pick_up(3,0)
+change_stop1(2,2)
+change_stop1(3,2)
+change_stop2(1,20)
+drop(1,0)
+change_stop2(0,3)
+change_stop2(4,3)
+change_stop2(2,3)
+change_stop1(2,3)
+change_stop1(3,3)
+change_stop2(3,3)
+pick_up(1,0)
+change_stop2(1,3)
+nodesExpanded : 21
+Profit: 4
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+add_stop(0,5,28)
+change_stops(2,0,11,9,)
+add_stop2(4,2)
+swap(1,3,0,1)
+add_stop2(4,2)
+nodesExpanded : 6
+Profit: 41
+Profit: 63
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,2)
+add_stop(1,2)
+add_stop(2,2)
+add_stop(3,2)
+add_stop(4,2)
+nodesExpanded : 6
+Profit: 63
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 63
+Seed: 92
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+24
+add_station(0,20)
+add_stop(0,0)
+pick_up(0,19)
+add_stop(0,2)
+add_station(1,18)
+add_stop(1,2)
+pick_up(1,29)
+add_stop(1,23)
+drop(1,0)
+add_station(2,24)
+add_stop(2,2)
+pick_up(2,18)
+change_stop1(2,12)
+add_stop(2,2)
+add_station(3,9)
+add_stop(3,2)
+pick_up(3,14)
+change_stop1(3,17)
+add_stop(3,2)
+add_station(4,14)
+add_stop(4,2)
+pick_up(4,11)
+change_stop1(4,8)
+add_stop(4,2)
+nodesExpanded : 25
+Profit: 91
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,18,28,0)
+pick_up(0,29)
+add_station(1,20,18,0)
+add_stop(1,2,0)
+add_station(2,24,18,2)
+add_stop(2,8,0)
+add_station(3,9,14,2)
+add_stop(3,8,0)
+add_station(4,14,10,2)
+add_stop(4,8,0)
+nodesExpanded : 11
+Profit: 89
+Profit: -11
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+16
+pick_up(2,0)
+change_stop2(3,0)
+change_stop2(2,0)
+change_stop1(2,0)
+add_stop(1,0)
+add_stop(0,2)
+add_stop(0,23)
+add_stop(1,23)
+change_stop1(4,0)
+pick_up(3,0)
+change_stop1(3,0)
+pick_up(4,0)
+change_stop2(4,0)
+change_stop2(0,0)
+change_stop2(1,0)
+change_stop1(0,0)
+nodesExpanded : 17
+Profit: 0
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+add_stop(0,2,30)
+add_stop(1,0,30)
+add_stop2(2,0)
+switch(3,-5)
+add_stop2(2,12)
+nodesExpanded : 6
+Profit: 71
+Profit: 91
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,8)
+add_stop(1,8)
+add_stop(2,8)
+add_stop(3,8)
+add_stop(4,8)
+nodesExpanded : 6
+Profit: 91
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 91
+Seed: 78
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+25
+add_station(0,4)
+add_stop(0,14)
+pick_up(0,10)
+add_stop(0,16)
+add_station(1,24)
+add_stop(1,16)
+pick_up(1,18)
+add_stop(1,14)
+add_station(2,22)
+add_stop(2,14)
+pick_up(2,23)
+change_stop1(2,2)
+add_stop(2,14)
+add_station(3,11)
+add_stop(3,14)
+pick_up(3,12)
+change_stop1(3,19)
+add_stop(3,14)
+drop(0,0)
+add_station(4,18)
+add_stop(4,14)
+pick_up(4,17)
+change_stop1(4,3)
+add_stop(4,14)
+change_stop1(1,12)
+nodesExpanded : 26
+Profit: 80
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,22,22,2)
+pick_up(0,23)
+add_station(1,24,18,3)
+add_stop(1,8,0)
+add_station(2,18,16,3)
+add_stop(2,12,0)
+add_station(3,0,12,8)
+add_stop(3,12,0)
+add_station(4,7,12,12)
+add_stop(4,13,0)
+nodesExpanded : 11
+Profit: 81
+Profit: -13
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+15
+change_stop1(4,0)
+pick_up(4,1)
+change_stop1(0,14)
+change_stop2(3,16)
+add_stop(1,14)
+add_stop(2,14)
+add_stop(1,16)
+add_stop(2,16)
+drop(0,0)
+change_stop2(4,14)
+pick_up(3,12)
+change_stop1(3,19)
+change_stop2(1,14)
+change_stop2(2,14)
+change_stop1(3,16)
+nodesExpanded : 16
+Profit: 26
+Set Complejo Heuristico Base ///////////////////////////////////////
+6
+add_stop(1,14,30)
+add_stop(2,16,30)
+change_stops(4,0,19,1,)
+add_stop2(0,10)
+switch(3,-10)
+add_stop2(4,2)
+nodesExpanded : 7
+Profit: 97
+Profit: 83
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,12)
+add_stop(1,12)
+add_stop(2,12)
+add_stop(3,12)
+add_stop(4,12)
+nodesExpanded : 6
+Profit: 83
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 83
+Seed: 71
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+24
+add_station(0,7)
+add_stop(0,2)
+pick_up(0,19)
+add_stop(0,11)
+add_station(1,21)
+add_stop(1,11)
+pick_up(1,17)
+add_stop(1,19)
+add_station(2,23)
+add_stop(2,19)
+pick_up(2,7)
+add_stop(2,5)
+add_station(3,8)
+add_stop(3,5)
+pick_up(3,11)
+add_stop(3,3)
+add_station(4,13)
+add_stop(4,3)
+pick_up(4,17)
+add_stop(4,19)
+change_stop2(3,19)
+drop(2,0)
+change_stop2(0,19)
+change_stop1(3,6)
+nodesExpanded : 25
+Profit: 71
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,7,18,2)
+pick_up(0,19)
+add_station(1,13,16,2)
+add_stop(1,3,0)
+add_station(2,21,16,2)
+add_stop(2,3,0)
+add_station(3,1,12,3)
+add_stop(3,5,0)
+add_station(4,4,10,5)
+pick_up(4,11)
+nodesExpanded : 11
+Profit: 74
+Profit: -6
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+16
+pick_up(4,0)
+change_stop2(3,2)
+change_stop2(2,2)
+change_stop2(1,2)
+change_stop2(4,2)
+change_stop1(4,2)
+add_stop(0,2)
+add_stop(0,11)
+drop(3,10)
+change_stop1(3,19)
+pick_up(2,0)
+change_stop1(2,2)
+pick_up(1,5)
+change_stop2(0,2)
+pick_up(3,11)
+change_stop1(1,11)
+nodesExpanded : 17
+Profit: 11
+Set Complejo Heuristico Base ///////////////////////////////////////
+6
+add_stop(0,2,30)
+add_stop2(4,3)
+add_stop2(4,3)
+switch(2,-3)
+add_stop2(3,2)
+add_stop2(1,2)
+nodesExpanded : 7
+Profit: 55
+Profit: 76
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,6)
+add_stop(1,6)
+add_stop(2,6)
+add_stop(3,6)
+add_stop(4,6)
+nodesExpanded : 6
+Profit: 76
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 76
+Seed: 4
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+25
+add_station(0,17)
+add_stop(0,22)
+pick_up(0,16)
+add_stop(0,19)
+add_station(1,3)
+add_stop(1,19)
+pick_up(1,7)
+add_stop(1,11)
+add_station(2,2)
+add_stop(2,11)
+pick_up(2,17)
+add_stop(2,19)
+change_stop2(1,19)
+add_station(3,9)
+add_stop(3,19)
+pick_up(3,3)
+change_stop1(1,13)
+add_stop(3,22)
+add_station(4,10)
+add_stop(4,19)
+pick_up(4,6)
+add_stop(4,22)
+change_stop1(4,7)
+change_stop2(3,19)
+swap(3,4,0,1)
+nodesExpanded : 26
+Profit: 49
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,2,16,7)
+add_stop(0,8,0)
+add_station(1,17,16,7)
+add_stop(1,11,0)
+add_station(2,12,10,0)
+add_stop(2,11,0)
+add_station(3,15,8,11)
+pick_up(3,9)
+add_station(4,3,6,13)
+pick_up(4,7)
+nodesExpanded : 11
+Profit: 58
+Profit: -55
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+12
+change_stop1(1,2)
+change_stop2(1,5)
+pick_up(3,0)
+change_stop1(2,11)
+change_stop1(4,22)
+change_stop1(3,11)
+change_stop2(3,11)
+add_stop(0,11)
+add_stop(0,22)
+drop(2,0)
+change_stop2(2,19)
+change_stop2(0,11)
+nodesExpanded : 13
+Profit: 16
+Set Complejo Heuristico Base ///////////////////////////////////////
+6
+add_stop2(1,11)
+add_stop(0,22,30)
+change_stops(3,0,2,1,)
+add_stop2(4,19)
+add_stop2(2,8)
+add_stop2(4,19)
+nodesExpanded : 7
+Profit: 69
+Profit: 60
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+9
+add_stop(1,22)
+add_stop(2,22)
+add_stop(3,22)
+add_stop(4,22)
+add_stop(0,11)
+drop(0,6)
+swap(0,4,1,0)
+drop(0,1)
+change_stop1(4,8)
+nodesExpanded : 10
+Profit: 60
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 60
+Seed: 34
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+23
+add_station(0,16)
+add_station(1,7)
+add_stop(0,3)
+pick_up(0,20)
+add_stop(0,5)
+add_stop(1,5)
+pick_up(1,23)
+add_stop(1,24)
+drop(1,0)
+add_station(2,22)
+add_stop(2,5)
+pick_up(2,13)
+add_stop(2,23)
+drop(2,0)
+add_station(3,6)
+add_stop(3,5)
+pick_up(3,12)
+change_stop1(3,13)
+add_stop(3,5)
+add_station(4,2)
+add_stop(4,5)
+add_stop(4,1)
+change_stop2(4,5)
+nodesExpanded : 24
+Profit: 68
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,7,22,1)
+add_stop(0,3,0)
+add_station(1,16,20,1)
+add_stop(1,3,0)
+add_station(2,11,14,3)
+add_stop(2,5,0)
+add_station(3,6,12,5)
+add_stop(3,10,0)
+add_station(4,18,12,5)
+pick_up(4,13)
+nodesExpanded : 11
+Profit: 81
+Profit: -3
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+12
+change_stop1(3,10)
+change_stop1(4,3)
+change_stop2(3,24)
+change_stop2(2,23)
+add_stop(0,5)
+add_stop(1,5)
+add_stop(0,23)
+add_stop(1,23)
+change_stop2(4,13)
+change_stop2(0,5)
+drop(2,0)
+change_stop2(1,5)
+nodesExpanded : 13
+Profit: 26
+Set Complejo Heuristico Base ///////////////////////////////////////
+6
+add_stop2(3,10)
+add_stop(0,3,29)
+add_stop(1,24,27)
+add_stop2(4,5)
+switch(2,-2)
+add_stop2(4,23)
+nodesExpanded : 7
+Profit: 104
+Profit: 84
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,1)
+add_stop(1,1)
+add_stop(2,1)
+add_stop(3,1)
+add_stop(4,1)
+nodesExpanded : 6
+Profit: 84
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 84
+Seed: 60
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+26
+add_station(0,23)
+add_stop(0,9)
+pick_up(0,23)
+add_station(1,1)
+add_stop(0,11)
+add_stop(1,11)
+pick_up(1,8)
+add_station(2,2)
+add_station(3,5)
+add_stop(1,20)
+add_stop(2,20)
+pick_up(2,8)
+add_station(4,14)
+add_stop(2,0)
+add_stop(3,0)
+pick_up(3,12)
+add_stop(3,11)
+add_stop(4,11)
+pick_up(4,12)
+change_stop1(1,6)
+pick_up(4,15)
+add_stop(4,7)
+drop(4,7)
+change_stop2(2,11)
+swap(1,4,1,0)
+change_stop1(4,4)
+nodesExpanded : 27
+Profit: 66
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,23,22,0)
+add_stop(0,6,0)
+add_station(1,14,14,4)
+add_stop(1,7,0)
+add_station(2,3,12,9)
+add_stop(2,11,0)
+add_station(3,5,12,9)
+add_stop(3,11,0)
+add_station(4,24,12,9)
+add_stop(4,11,0)
+nodesExpanded : 11
+Profit: 72
+Profit: -28
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+14
+pick_up(1,7)
+pick_up(0,0)
+change_stop2(2,9)
+change_stop1(3,6)
+change_stop1(0,9)
+change_stop2(0,9)
+change_stop2(1,9)
+add_stop(4,9)
+add_stop(4,6)
+pick_up(2,8)
+change_stop1(1,20)
+pick_up(1,12)
+change_stop2(4,9)
+change_stop1(2,0)
+nodesExpanded : 15
+Profit: 12
+Set Complejo Heuristico Base ///////////////////////////////////////
+14
+add_stop(4,3,13)
+add_stop2(1,6)
+add_stop2(0,0)
+add_stop2(0,0)
+add_stop2(0,0)
+add_stop2(0,9)
+add_stop2(2,0)
+add_stop2(0,9)
+add_stop2(3,0)
+add_stop2(3,0)
+add_stop2(3,0)
+add_stop2(3,0)
+add_stop2(3,0)
+add_stop2(3,0)
+nodesExpanded : 15
+Profit: 56
+Profit: 73
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(4,7)
+add_stop(0,4)
+add_stop(1,4)
+add_stop(2,4)
+add_stop(3,4)
+nodesExpanded : 6
+Profit: 74
+Set Complejo Heuristico Base ///////////////////////////////////////
+1
+add_stop(4,4,0)
+nodesExpanded : 2
+Profit: 74
+Seed: 63
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+25
+add_station(0,22)
+add_stop(0,23)
+pick_up(0,26)
+add_stop(0,20)
+add_station(1,8)
+add_stop(1,20)
+pick_up(1,13)
+add_stop(1,11)
+add_station(2,9)
+add_stop(2,11)
+pick_up(2,21)
+add_stop(2,7)
+drop(2,1)
+add_station(3,5)
+add_stop(3,11)
+pick_up(3,5)
+add_stop(3,10)
+swap(1,3,0,1)
+add_station(4,0)
+add_stop(4,20)
+pick_up(4,6)
+add_stop(4,11)
+change_stop1(3,6)
+change_stop2(0,11)
+change_stop2(3,11)
+nodesExpanded : 26
+Profit: 71
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,22,26,3)
+add_stop(0,4,0)
+add_station(1,9,20,6)
+add_stop(1,7,0)
+add_station(2,8,12,6)
+add_stop(2,7,0)
+add_station(3,19,10,10)
+add_stop(3,11,0)
+add_station(4,0,6,7)
+add_stop(4,10,0)
+nodesExpanded : 11
+Profit: 74
+Profit: 5
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+17
+change_stop1(3,23)
+change_stop2(0,20)
+change_stop1(0,11)
+change_stop2(1,20)
+add_stop(2,20)
+add_stop(2,23)
+add_stop(4,20)
+add_stop(4,23)
+drop(3,0)
+change_stop1(1,23)
+pick_up(1,0)
+pick_up(0,6)
+change_stop1(2,23)
+change_stop1(4,23)
+change_stop2(0,23)
+change_stop2(1,23)
+change_stop2(3,20)
+nodesExpanded : 18
+Profit: 19
+Set Complejo Heuristico Base ///////////////////////////////////////
+7
+add_stop(2,23,30)
+add_stop(4,20,27)
+add_stop2(3,7)
+add_stop2(0,3)
+add_stop2(3,11)
+switch(1,-2)
+add_stop2(0,3)
+nodesExpanded : 8
+Profit: 94
+Profit: 77
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,6)
+add_stop(1,6)
+add_stop(2,6)
+add_stop(3,6)
+add_stop(4,6)
+nodesExpanded : 6
+Profit: 77
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 77
+Seed: 85
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+26
+add_station(0,13)
+add_stop(0,14)
+pick_up(0,19)
+add_stop(0,24)
+add_station(1,7)
+add_stop(1,24)
+pick_up(1,10)
+add_stop(1,3)
+add_station(2,21)
+add_stop(2,3)
+pick_up(2,8)
+add_stop(2,9)
+add_station(3,16)
+add_stop(3,9)
+pick_up(3,14)
+add_station(4,8)
+add_stop(3,3)
+add_stop(4,3)
+pick_up(4,18)
+change_stop1(2,22)
+pick_up(4,19)
+add_stop(4,24)
+change_stop2(1,24)
+change_stop1(1,12)
+change_stop2(3,24)
+change_stop2(2,24)
+nodesExpanded : 27
+Profit: 70
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,8,18,3)
+pick_up(0,19)
+add_station(1,13,18,4)
+add_stop(1,9,0)
+add_station(2,5,14,1)
+add_stop(2,3,0)
+add_station(3,16,14,9)
+add_stop(3,12,0)
+add_station(4,0,12,9)
+add_stop(4,14,0)
+nodesExpanded : 11
+Profit: 77
+Profit: -33
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+18
+pick_up(3,19)
+pick_up(4,11)
+change_stop2(2,5)
+change_stop1(2,14)
+change_stop2(0,24)
+pick_up(2,14)
+change_stop2(4,3)
+change_stop2(2,3)
+change_stop2(3,3)
+add_stop(1,24)
+add_stop(1,14)
+change_stop2(1,3)
+change_stop1(0,22)
+pick_up(0,13)
+change_stop2(1,24)
+change_stop2(2,24)
+change_stop2(3,24)
+change_stop1(4,3)
+nodesExpanded : 19
+Profit: 57
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+change_stops(2,3,8,15,)
+change_stops(3,5,11,3,)
+add_stop(1,14,29)
+add_stop2(4,9)
+add_stop2(0,3)
+nodesExpanded : 6
+Profit: 84
+Profit: 79
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+6
+add_stop(0,3)
+add_stop(1,3)
+add_stop(2,12)
+drop(2,2)
+add_stop(3,3)
+add_stop(4,3)
+nodesExpanded : 7
+Profit: 79
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 79
+Seed: 5
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+28
+add_station(0,16)
+add_station(1,11)
+add_station(2,22)
+add_station(3,8)
+add_station(4,13)
+add_stop(0,9)
+pick_up(0,16)
+add_stop(0,19)
+add_stop(1,19)
+pick_up(1,11)
+add_stop(1,23)
+add_stop(2,23)
+pick_up(2,13)
+add_stop(2,5)
+drop(2,1)
+add_stop(3,23)
+pick_up(3,12)
+change_stop1(3,24)
+add_stop(3,23)
+add_stop(4,23)
+pick_up(4,12)
+change_stop1(2,18)
+pick_up(4,13)
+add_stop(4,18)
+drop(4,3)
+change_stop2(0,23)
+change_stop1(2,7)
+drop(4,2)
+nodesExpanded : 29
+Profit: 65
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,22,20,5)
+add_stop(0,9,0)
+add_station(1,8,18,18)
+add_stop(1,19,0)
+add_station(2,13,18,23)
+add_stop(2,24,0)
+add_station(3,16,16,9)
+add_stop(3,7,0)
+add_station(4,0,8,19)
+add_stop(4,23,0)
+nodesExpanded : 11
+Profit: 79
+Profit: -31
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+15
+pick_up(3,18)
+change_stop2(4,0)
+change_stop1(0,5)
+change_stop1(4,5)
+change_stop2(0,19)
+change_stop1(2,23)
+drop(4,9)
+add_stop(1,24)
+add_stop(1,18)
+change_stop2(3,24)
+swap(1,4,1,0)
+drop(0,0)
+change_stop1(1,5)
+change_stop2(3,5)
+change_stop2(2,24)
+nodesExpanded : 16
+Profit: 40
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+change_stops(2,0,8,2,)
+add_stop(1,5,26)
+add_stop2(0,19)
+add_stop2(4,23)
+change_stop2(3,18,18)
+nodesExpanded : 6
+Profit: 67
+Profit: 68
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(1,18)
+add_stop(2,7)
+add_stop(3,18)
+add_stop(0,3)
+add_stop(4,6)
+nodesExpanded : 6
+Profit: 87
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+add_stop(1,7,0)
+add_stop(2,18,0)
+add_stop(3,18,0)
+add_stop(0,3,0)
+add_stop(4,6,0)
+nodesExpanded : 6
+Profit: 87
+Seed: 35
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+27
+add_station(0,11)
+add_stop(0,16)
+pick_up(0,26)
+add_station(1,21)
+add_station(2,24)
+add_stop(0,14)
+add_stop(1,14)
+pick_up(1,26)
+add_station(3,20)
+add_stop(1,18)
+drop(1,5)
+add_stop(2,14)
+pick_up(2,21)
+change_stop1(1,15)
+add_station(4,1)
+add_stop(2,4)
+drop(2,7)
+add_stop(3,14)
+pick_up(3,6)
+add_stop(4,14)
+pick_up(4,3)
+change_stop1(2,3)
+add_stop(3,15)
+add_stop(4,15)
+change_stop2(3,14)
+swap(3,4,0,1)
+change_stop1(1,6)
+nodesExpanded : 28
+Profit: 82
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,11,26,4)
+add_stop(0,14,0)
+add_station(1,21,26,14)
+add_stop(1,15,0)
+add_station(2,24,20,3)
+add_stop(2,5,0)
+add_station(3,2,10,0)
+add_stop(3,6,0)
+add_station(4,19,10,6)
+add_stop(4,8,0)
+nodesExpanded : 11
+Profit: 92
+Profit: -1
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+14
+change_stop2(4,16)
+change_stop2(2,5)
+pick_up(3,0)
+change_stop1(4,14)
+add_stop(0,18)
+add_stop(0,5)
+change_stop2(3,18)
+change_stop1(3,18)
+change_stop1(2,15)
+pick_up(2,17)
+change_stop1(0,5)
+change_stop1(3,5)
+change_stop2(3,5)
+change_stop1(1,18)
+nodesExpanded : 15
+Profit: 37
+Set Complejo Heuristico Base ///////////////////////////////////////
+4
+add_stop(0,5,30)
+add_stop2(4,8)
+add_stop2(2,8)
+add_stop2(3,14)
+nodesExpanded : 5
+Profit: 67
+Profit: 96
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,3)
+add_stop(1,3)
+add_stop(2,3)
+add_stop(3,3)
+add_stop(4,3)
+nodesExpanded : 6
+Profit: 96
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 96
+Seed: 90
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+31
+add_station(0,22)
+add_station(1,0)
+add_station(2,13)
+add_station(3,24)
+add_stop(0,8)
+pick_up(0,21)
+add_station(4,5)
+add_stop(0,9)
+add_stop(1,9)
+pick_up(1,21)
+add_stop(1,11)
+drop(1,2)
+add_stop(2,9)
+pick_up(2,19)
+change_stop1(1,12)
+pick_up(2,21)
+add_stop(2,3)
+drop(2,5)
+add_stop(3,9)
+pick_up(3,16)
+change_stop1(2,2)
+pick_up(3,17)
+add_stop(3,12)
+add_stop(4,12)
+pick_up(4,15)
+change_stop1(1,7)
+pick_up(4,17)
+add_stop(4,7)
+change_stop2(3,7)
+change_stop2(0,7)
+change_stop1(1,14)
+nodesExpanded : 32
+Profit: 97
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,13,24,2)
+add_stop(0,3,0)
+add_station(1,0,22,7)
+add_stop(1,8,0)
+add_station(2,5,22,8)
+add_stop(2,9,0)
+add_station(3,22,20,9)
+add_stop(3,11,0)
+add_station(4,24,16,11)
+add_stop(4,12,0)
+nodesExpanded : 11
+Profit: 104
+Profit: -3
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+15
+change_stop1(0,3)
+pick_up(1,0)
+change_stop1(3,9)
+pick_up(2,1)
+change_stop2(1,8)
+add_stop(4,8)
+add_stop(4,9)
+change_stop1(1,8)
+change_stop1(2,9)
+drop(3,0)
+change_stop2(0,12)
+change_stop1(1,9)
+drop(2,0)
+change_stop1(4,9)
+change_stop2(1,9)
+nodesExpanded : 16
+Profit: 24
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+add_stop(4,3,28)
+add_stop2(0,9)
+change_stops(1,2,6,10,)
+add_stop2(3,7)
+add_stop2(3,7)
+nodesExpanded : 6
+Profit: 60
+Profit: 97
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(3,2)
+add_stop(2,7)
+add_stop(1,14)
+add_stop(0,7)
+add_stop(4,21)
+nodesExpanded : 6
+Profit: 108
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+add_stop(3,2,0)
+add_stop(2,2,0)
+add_stop(1,2,0)
+add_stop(0,2,0)
+add_stop(4,2,0)
+nodesExpanded : 6
+Profit: 108
+Seed: 25
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+23
+add_station(0,13)
+add_stop(0,19)
+pick_up(0,24)
+add_station(1,16)
+add_stop(0,21)
+add_stop(1,21)
+pick_up(1,12)
+add_stop(1,8)
+add_station(2,2)
+add_stop(2,8)
+pick_up(2,1)
+add_stop(2,14)
+add_station(3,6)
+add_stop(3,8)
+pick_up(3,17)
+swap(2,3,1,0)
+add_stop(3,8)
+add_station(4,1)
+add_stop(4,8)
+pick_up(4,14)
+change_stop1(4,4)
+add_stop(4,8)
+change_stop2(0,8)
+nodesExpanded : 24
+Profit: 68
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,13,24,4)
+add_stop(0,8,0)
+add_station(1,6,16,7)
+add_stop(1,8,0)
+add_station(2,1,14,14)
+add_stop(2,19,0)
+add_station(3,18,14,14)
+add_stop(3,19,0)
+add_station(4,5,12,19)
+pick_up(4,13)
+nodesExpanded : 11
+Profit: 81
+Profit: -14
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+15
+pick_up(0,0)
+pick_up(1,1)
+change_stop1(4,19)
+change_stop1(3,19)
+change_stop2(0,19)
+change_stop1(0,19)
+pick_up(0,4)
+change_stop2(1,21)
+pick_up(4,0)
+change_stop2(3,21)
+swap(0,4,0,1)
+change_stop1(1,19)
+drop(3,0)
+change_stop2(1,19)
+change_stop1(2,4)
+nodesExpanded : 16
+Profit: 25
+Set Complejo Heuristico Base ///////////////////////////////////////
+8
+add_stop2(0,19)
+add_stop2(1,0)
+add_stop2(4,3)
+add_stop2(4,3)
+add_stop2(0,19)
+add_stop2(4,21)
+add_stop2(3,3)
+add_stop2(2,3)
+nodesExpanded : 9
+Profit: 57
+Profit: 82
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,7)
+add_stop(1,7)
+add_stop(2,7)
+add_stop(3,7)
+add_stop(4,7)
+nodesExpanded : 6
+Profit: 82
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 82
+Seed: 12
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+25
+add_station(0,10)
+add_stop(0,18)
+pick_up(0,23)
+add_stop(0,11)
+add_station(1,24)
+add_stop(1,11)
+pick_up(1,23)
+add_station(2,14)
+add_stop(1,15)
+add_stop(2,15)
+pick_up(2,27)
+add_stop(2,19)
+drop(2,3)
+add_station(3,8)
+add_stop(3,15)
+pick_up(3,17)
+change_stop1(3,2)
+add_stop(3,15)
+add_station(4,23)
+add_stop(4,15)
+pick_up(4,3)
+add_stop(4,21)
+change_stop2(0,15)
+drop(4,0)
+change_stop1(2,1)
+nodesExpanded : 26
+Profit: 93
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,14,26,1)
+add_stop(0,2,0)
+add_station(1,10,22,5)
+add_stop(1,6,0)
+add_station(2,24,22,11)
+pick_up(2,23)
+add_station(3,8,16,11)
+add_stop(3,15,0)
+add_station(4,7,10,2)
+add_stop(4,15,0)
+nodesExpanded : 11
+Profit: 97
+Profit: -42
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+15
+pick_up(4,3)
+change_stop1(1,18)
+pick_up(2,0)
+pick_up(1,7)
+pick_up(0,6)
+change_stop1(3,18)
+change_stop2(4,11)
+change_stop2(2,11)
+change_stop1(2,11)
+change_stop1(4,15)
+pick_up(4,9)
+change_stop2(1,11)
+change_stop2(0,11)
+change_stop1(0,19)
+pick_up(3,2)
+nodesExpanded : 16
+Profit: 24
+Set Complejo Heuristico Base ///////////////////////////////////////
+24
+add_stop2(4,3)
+change_stops(1,6,12,17,)
+add_stop2(2,11)
+add_stop2(0,0)
+add_stop2(2,11)
+add_stop2(3,1)
+add_stop2(3,1)
+add_stop2(3,1)
+add_stop2(3,1)
+add_stop2(3,2)
+add_stop2(3,2)
+add_stop2(3,2)
+add_stop2(3,2)
+add_stop2(3,2)
+add_stop2(3,15)
+add_stop2(3,15)
+add_stop2(3,15)
+add_stop2(3,15)
+add_stop2(3,18)
+add_stop2(3,18)
+add_stop2(3,18)
+add_stop2(3,18)
+add_stop2(3,18)
+add_stop2(3,18)
+nodesExpanded : 25
+Profit: 70
+Profit: 101
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,21)
+add_stop(1,21)
+add_stop(2,21)
+add_stop(3,21)
+add_stop(4,21)
+nodesExpanded : 6
+Profit: 101
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 101
+Seed: 95
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+24
+add_station(0,23)
+add_stop(0,11)
+pick_up(0,4)
+add_stop(0,5)
+add_station(1,14)
+add_stop(1,11)
+pick_up(1,18)
+add_stop(1,5)
+add_station(2,2)
+add_stop(2,5)
+pick_up(2,15)
+change_stop1(2,15)
+add_stop(2,5)
+add_station(3,20)
+add_stop(3,5)
+pick_up(3,14)
+change_stop1(3,1)
+add_stop(3,5)
+add_station(4,3)
+add_stop(4,5)
+pick_up(4,10)
+change_stop1(4,17)
+add_stop(4,5)
+change_stop1(0,9)
+nodesExpanded : 25
+Profit: 61
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,14,18,1)
+add_stop(0,5,0)
+add_station(1,2,14,1)
+add_stop(1,5,0)
+add_station(2,20,14,5)
+add_stop(2,9,0)
+add_station(3,3,10,0)
+add_stop(3,4,0)
+add_station(4,10,6,5)
+add_stop(4,7,0)
+nodesExpanded : 11
+Profit: 62
+Profit: -33
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+19
+pick_up(4,0)
+change_stop2(0,9)
+change_stop1(3,0)
+pick_up(2,4)
+change_stop2(4,9)
+change_stop1(4,9)
+pick_up(0,6)
+change_stop2(2,9)
+change_stop1(2,11)
+change_stop1(1,15)
+swap(1,3,0,1)
+drop(1,0)
+change_stop1(1,9)
+change_stop1(0,11)
+change_stop1(3,1)
+pick_up(0,0)
+change_stop1(0,9)
+change_stop1(3,11)
+drop(3,2)
+nodesExpanded : 20
+Profit: 14
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+add_stop2(4,9)
+add_stop2(3,11)
+change_stop2(0,6,16)
+add_stop2(2,0)
+add_stop2(4,9)
+nodesExpanded : 6
+Profit: 32
+Profit: 64
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+6
+add_stop(1,11)
+add_stop(2,11)
+add_stop(3,11)
+add_stop(4,11)
+add_stop(0,9)
+drop(0,5)
+nodesExpanded : 7
+Profit: 64
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 64
+Seed: 25
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+23
+add_station(0,13)
+add_stop(0,19)
+pick_up(0,24)
+add_station(1,16)
+add_stop(0,21)
+add_stop(1,21)
+pick_up(1,12)
+add_stop(1,8)
+add_station(2,2)
+add_stop(2,8)
+pick_up(2,1)
+add_stop(2,14)
+add_station(3,6)
+add_stop(3,8)
+pick_up(3,17)
+swap(2,3,1,0)
+add_stop(3,8)
+add_station(4,1)
+add_stop(4,8)
+pick_up(4,14)
+change_stop1(4,4)
+add_stop(4,8)
+change_stop2(0,8)
+nodesExpanded : 24
+Profit: 68
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,13,24,4)
+add_stop(0,8,0)
+add_station(1,6,16,7)
+add_stop(1,8,0)
+add_station(2,1,14,14)
+add_stop(2,19,0)
+add_station(3,18,14,14)
+add_stop(3,19,0)
+add_station(4,5,12,19)
+pick_up(4,13)
+nodesExpanded : 11
+Profit: 81
+Profit: -14
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+15
+pick_up(0,0)
+pick_up(1,1)
+change_stop1(4,19)
+change_stop1(3,19)
+change_stop2(0,19)
+change_stop1(0,19)
+pick_up(0,4)
+change_stop2(1,21)
+pick_up(4,0)
+change_stop2(3,21)
+swap(0,4,0,1)
+change_stop1(1,19)
+drop(3,0)
+change_stop2(1,19)
+change_stop1(2,4)
+nodesExpanded : 16
+Profit: 25
+Set Complejo Heuristico Base ///////////////////////////////////////
+8
+add_stop2(0,19)
+add_stop2(1,0)
+add_stop2(4,3)
+add_stop2(4,3)
+add_stop2(0,19)
+add_stop2(4,21)
+add_stop2(3,3)
+add_stop2(2,3)
+nodesExpanded : 9
+Profit: 57
+Profit: 82
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+5
+add_stop(0,7)
+add_stop(1,7)
+add_stop(2,7)
+add_stop(3,7)
+add_stop(4,7)
+nodesExpanded : 6
+Profit: 82
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 82
+Seed: 95
+Profit: 0
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+24
+add_station(0,23)
+add_stop(0,11)
+pick_up(0,4)
+add_stop(0,5)
+add_station(1,14)
+add_stop(1,11)
+pick_up(1,18)
+add_stop(1,5)
+add_station(2,2)
+add_stop(2,5)
+pick_up(2,15)
+change_stop1(2,15)
+add_stop(2,5)
+add_station(3,20)
+add_stop(3,5)
+pick_up(3,14)
+change_stop1(3,1)
+add_stop(3,5)
+add_station(4,3)
+add_stop(4,5)
+pick_up(4,10)
+change_stop1(4,17)
+add_stop(4,5)
+change_stop1(0,9)
+nodesExpanded : 25
+Profit: 61
+Set Complejo Heuristico Base ///////////////////////////////////////
+10
+add_station(0,14,18,1)
+add_stop(0,5,0)
+add_station(1,2,14,1)
+add_stop(1,5,0)
+add_station(2,20,14,5)
+add_stop(2,9,0)
+add_station(3,3,10,0)
+add_stop(3,4,0)
+add_station(4,10,6,5)
+add_stop(4,7,0)
+nodesExpanded : 11
+Profit: 62
+Profit: -33
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+19
+pick_up(4,0)
+change_stop2(0,9)
+change_stop1(3,0)
+pick_up(2,4)
+change_stop2(4,9)
+change_stop1(4,9)
+pick_up(0,6)
+change_stop2(2,9)
+change_stop1(2,11)
+change_stop1(1,15)
+swap(1,3,0,1)
+drop(1,0)
+change_stop1(1,9)
+change_stop1(0,11)
+change_stop1(3,1)
+pick_up(0,0)
+change_stop1(0,9)
+change_stop1(3,11)
+drop(3,2)
+nodesExpanded : 20
+Profit: 14
+Set Complejo Heuristico Base ///////////////////////////////////////
+5
+add_stop2(4,9)
+add_stop2(3,11)
+change_stop2(0,6,16)
+add_stop2(2,0)
+add_stop2(4,9)
+nodesExpanded : 6
+Profit: 32
+Profit: 64
+Set Simple Heuristico Ponderado  ///////////////////////////////////////
+6
+add_stop(1,11)
+add_stop(2,11)
+add_stop(3,11)
+add_stop(4,11)
+add_stop(0,9)
+drop(0,5)
+nodesExpanded : 7
+Profit: 64
+Set Complejo Heuristico Base ///////////////////////////////////////
+0
+nodesExpanded : 1
+Profit: 64
+Set1+Basic
+Operador drop Valor 23
+Operador pick_up Valor 105
+Operador delete_stop Valor 0
+Operador swap Valor 8
+Operador add_stop Valor 200
+Operador add_station Valor 100
+Operador change_stop1 Valor 44
+Operador profit Valor 1475
+Operador change_stop2 Valor 21
+Set2+Basic
+Operador drop Valor 0
+Operador pick_up Valor 15
+Operador swap Valor 0
+Operador add_stop Valor 85
+Operador add_station Valor 100
+Operador add_stop2 Valor 0
+Operador change_stop1 Valor 0
+Operador profit Valor 1592
+Operador change_stop2 Valor 0
+Operador change_stops Valor 0
+Operador switch Valor 0
+
+Set1+Mixed
+Operador drop Valor 18
+Operador pick_up Valor 60
+Operador delete_stop Valor 0
+Operador swap Valor 7
+Operador add_stop Valor 39
+Operador add_station Valor 0
+Operador change_stop1 Valor 95
+Operador profit Valor 498
+Operador change_stop2 Valor 93
+Set2+Mixed
+Operador drop Valor 0
+Operador pick_up Valor 0
+Operador swap Valor 1
+Operador add_stop Valor 19
+Operador add_station Valor 0
+Operador add_stop2 Valor 134
+Operador change_stop1 Valor 0
+Operador profit Valor 1387
+Operador change_stop2 Valor 3
+Operador change_stops Valor 11
+Operador switch Valor 6
+
+Set1+Greedy
+Operador drop Valor 5
+Operador pick_up Valor 0
+Operador delete_stop Valor 0
+Operador swap Valor 1
+Operador add_stop Valor 100
+Operador add_station Valor 0
+Operador change_stop1 Valor 1
+Operador profit Valor 1647
+Operador change_stop2 Valor 0
+Set2+Greedy
+Operador drop Valor 0
+Operador pick_up Valor 0
+Operador swap Valor 0
+Operador add_stop Valor 11
+Operador add_station Valor 0
+Operador add_stop2 Valor 0
+Operador change_stop1 Valor 0
+Operador profit Valor 1539
+Operador change_stop2 Valor 0
+Operador change_stops Valor 0
+Operador switch Valor 0

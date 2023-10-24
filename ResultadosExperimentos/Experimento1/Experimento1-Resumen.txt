@@ -1,0 +1,68 @@
+Set1+Basic
+Operador drop Valor 23
+Operador pick_up Valor 105
+Operador delete_stop Valor 0
+Operador swap Valor 8
+Operador add_stop Valor 200
+Operador add_station Valor 100
+Operador change_stop1 Valor 44
+Operador profit Valor 1475
+Operador change_stop2 Valor 21
+Set2+Basic
+Operador drop Valor 0
+Operador pick_up Valor 15
+Operador swap Valor 0
+Operador add_stop Valor 85
+Operador add_station Valor 100
+Operador add_stop2 Valor 0
+Operador change_stop1 Valor 0
+Operador profit Valor 1592
+Operador change_stop2 Valor 0
+Operador change_stops Valor 0
+Operador switch Valor 0
+
+Set1+Mixed
+Operador drop Valor 18
+Operador pick_up Valor 60
+Operador delete_stop Valor 0
+Operador swap Valor 7
+Operador add_stop Valor 39
+Operador add_station Valor 0
+Operador change_stop1 Valor 95
+Operador profit Valor 498
+Operador change_stop2 Valor 93
+Set2+Mixed
+Operador drop Valor 0
+Operador pick_up Valor 0
+Operador swap Valor 1
+Operador add_stop Valor 19
+Operador add_station Valor 0
+Operador add_stop2 Valor 134
+Operador change_stop1 Valor 0
+Operador profit Valor 1387
+Operador change_stop2 Valor 3
+Operador change_stops Valor 11
+Operador switch Valor 6
+
+Set1+Greedy
+Operador drop Valor 5
+Operador pick_up Valor 0
+Operador delete_stop Valor 0
+Operador swap Valor 1
+Operador add_stop Valor 100
+Operador add_station Valor 0
+Operador change_stop1 Valor 1
+Operador profit Valor 1647
+Operador change_stop2 Valor 0
+Set2+Greedy
+Operador drop Valor 0
+Operador pick_up Valor 0
+Operador swap Valor 0
+Operador add_stop Valor 11
+Operador add_station Valor 0
+Operador add_stop2 Valor 0
+Operador change_stop1 Valor 0
+Operador profit Valor 1539
+Operador change_stop2 Valor 0
+Operador change_stops Valor 0
+Operador switch Valor 0

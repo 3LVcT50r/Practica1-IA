@@ -57,71 +57,18 @@ public class BicingBoard2 {
                 }
             });
 
-            for (int i = 0; i < n; ++i) {
-                System.out.print(lista[i][0] + " " +  lista[i][1]+ " ");
-            }
-            System.out.println();
-
 
 
             for(int i = 0; i < van; ++i) {
 
-                int profit[][] = new int [n][3];
-
-                for (int z=0; z < n; ++z){
-                        profit[z][0] = lista[z][0];
-                        profit[z][1] = lista[z][1];
-                        profit[z][2] = lista[z][0];
-
-                }
-
-                for (int y = 0; y < n; ++y) {
-                    System.out.print(profit[y][0] + " " + profit[y][1] + " ");
-                }
-                System.out.println();
-
                 state[i][START] = lista[n-1-i][1];
                 state[i][TBIC] = lista[n-1-i][0];
-                int startX = est.get(state[i][START]).getCoordX();
-                int startY = est.get(state[i][START]).getCoordY();
-
-                for (int j = 0; j < n; ++j) {
-                    int startX2 = est.get(j).getCoordX();
-                    int startY2 = est.get(j).getCoordY();
-                    int dist = Math.abs(startX-startX2) + Math.abs(startY-startY2);
-                    dist = dist/1000;
-                    dist = dist * (state[i][TBIC]+9)/10;
 
 
+                state[i][STOP1] = lista[i][1];
 
-                    profit[j][0] = profit[j][0] + dist;
+                state[i][BIC1] = Math.min(-lista[i][0], state[i][TBIC]);
 
-
-
-
-                }
-
-                Arrays.sort(profit, new Comparator<int[]>() {
-                    @Override
-                    public int compare(int[] a, int[] b) {
-                        return Integer.compare(a[0], b[0]);
-                    }
-                });
-
-              /*  for (int k = 0; k < n; ++k) {
-                    System.out.print(lista[k][0] + " " +  lista[k][1]+ " ");
-                }*/
-                for (int y = 0; y < n; ++y) {
-                    System.out.print(profit[y][0] + " " + profit[y][1] + " ");
-                }
-                System.out.println();
-
-                state[i][STOP1] = profit[i][1];
-                state[i][BIC1] = Math.min(-profit[i][2], state[i][TBIC]);
-                for (int y = 0; y < n; ++y) {
-                    System.out.print(lista[y][0] + " " + lista[y][1] + " ");
-                }
-                System.out.println();
             }
 
 

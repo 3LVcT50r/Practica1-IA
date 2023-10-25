@@ -1,0 +1,11 @@
+HC + BICIS
+Ganancia: 82.4 distancia: 48.5 tiempo: 83.23611
+
+HC + GANANCIA TOTAL
+Ganancia: 73.6 distancia: 8.6 tiempo: 80.31253000000001
+
+SA + BICIS
+Ganancia: 64.7 distancia: 37.9 tiempo: 18.84123
+
+SA + GANANCIA TOTAL
+Ganancia: 40.0 distancia: 29.4 tiempo: 22.10969

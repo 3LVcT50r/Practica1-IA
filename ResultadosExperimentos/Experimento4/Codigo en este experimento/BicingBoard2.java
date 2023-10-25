@@ -222,13 +222,13 @@ public class BicingBoard2 {
         int bicNext = est.get(i).getNumBicicletasNext();
         int pickUp = bicPickUp(i);
         int dropped = bicDropped(i);
-        int realBic = bicNext+dropped-pickUp;
+        int demSin = dem - bicNext;
 
-        if (realBic >= dem) {
-            if (bicNext >= dem) return 0;
-            else return dem-bicNext;
+        if(demSin >= 0) return Math.min((dropped-pickUp),demSin);
+        else {
+            if (dropped-pickUp < demSin) return (dropped-pickUp) + demSin;
+            else return 0;
         }
-        else return dropped-pickUp;
     }
 
     public int getRealProfit() {

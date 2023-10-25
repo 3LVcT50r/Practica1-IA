@@ -1,0 +1,5 @@
+Furgonetas: 5 Gnancia Equilibrado: 79.8 Gnancia hora punta 84.9
+Furgonetas: 10 Gnancia Equilibrado: 110.47999999999999 Gnancia hora punta 119.39000000000001
+Furgonetas: 15 Gnancia Equilibrado: 140.648 Gnancia hora punta 150.73899999999998
+Furgonetas: 20 Gnancia Equilibrado: 127.56480000000002 Gnancia hora punta 141.5739
+Furgonetas: 25 Gnancia Equilibrado: 119.95648000000001 Gnancia hora punta 131.35738999999998

@@ -1,0 +1,3 @@
+Hora punta tiempo: 137.5482
+Equilibrado tiempo: 116.26493
+Equilibrado exp5 tiempo: 83.23611

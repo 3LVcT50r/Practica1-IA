@@ -161,6 +161,46 @@ public class BicingBoard2 {
         return total;
     }
 
+    public int getDist() {
+        int disTotal=0;
+
+        for (int i=0; i < van; ++i) {
+            int startX=0;
+            int startY=0;
+
+            if (state[i][START] != -1) {
+                startX = est.get(state[i][START]).getCoordX();
+                startY = est.get(state[i][START]).getCoordY();
+            }
+
+            int stop1X=0;
+            int stop1Y=0;
+            if (state[i][STOP1] != -1) {
+                stop1X = est.get(state[i][STOP1]).getCoordX();
+                stop1Y = est.get(state[i][STOP1]).getCoordY();
+            }
+
+            int stop2X=0;
+            int stop2Y=0;
+            if (state[i][STOP2] != -1) {
+                stop2X = est.get(state[i][STOP2]).getCoordX();
+                stop2Y = est.get(state[i][STOP2]).getCoordY();
+            }
+
+            int distStartStop1=0;
+            int distSp1Sp2=0;
+
+            if (state[i][STOP1] != -1)
+                distStartStop1 = (Math.abs(startX-stop1X)+Math.abs(startY-stop1Y))/1000;
+
+            if (state[i][STOP1] != -1 && state[i][STOP2] != -1 )
+                distSp1Sp2 = (Math.abs(stop2X-stop1X)+Math.abs(stop2Y-stop1Y))/1000;
+
+            disTotal += (distStartStop1+distSp1Sp2);
+        }
+        return disTotal;
+    }
+
     private int getWasteRow(int i) {
         int priceKm1 = (state[i][TBIC]+9)/10;
         int priceKm2 = ((state[i][TBIC]-state[i][BIC1])+9)/10;
@@ -222,13 +262,13 @@ public class BicingBoard2 {
         int bicNext = est.get(i).getNumBicicletasNext();
         int pickUp = bicPickUp(i);
         int dropped = bicDropped(i);
-        int realBic = bicNext+dropped-pickUp;
+        int demSin = dem - bicNext;
 
-        if (realBic >= dem) {
-            if (bicNext >= dem) return 0;
-            else return dem-bicNext;
+        if(demSin >= 0) return Math.min((dropped-pickUp),demSin);
+        else {
+            if (dropped-pickUp < demSin) return (dropped-pickUp) + demSin;
+            else return 0;
         }
-        else return dropped-pickUp;
     }
 
     public int getRealProfit() {
@@ -338,7 +378,7 @@ public class BicingBoard2 {
 
     public void operatorAddStop2(int vn, int st, int nbic) {
         state[vn][STOP2] = st;
-        state[vn][BIC1] -= nbic;
+        state[vn][BIC1] = nbic;
     }
     public boolean canAddStop2(int vn, int st, int nbic) {
         return vanBound(vn) && stationBound(st) && state[vn][STOP1] != -1 &&
